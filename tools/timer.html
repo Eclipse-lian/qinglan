@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="tm.title">青岚 · 倒计时 · 番茄钟</title>
+<meta name="description" content="青岚实用工具 · 倒计时与番茄钟，设定时长专注片刻。" data-i18n-content="tm.desc">
+<link rel="preconnect" href="https://miaoda.feishu.cn" crossorigin>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='7' fill='%230d2a3e'/%3E%3Cpath d='M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z' fill='%233db5ad'/%3E%3Cpath d='M5 33 L35 33 L35 35 L5 35 Z' fill='%232a9d97'/%3E%3C/svg%3E">
+<script>window.QL_I18N = {"tm.eb1":{"zh-CN":"漏 刻 之 器","zh-Hant":"漏 刻 之 器","en":"Hourglass Instrument","en-GB":"Hourglass Instrument","en-US":"Hourglass Instrument","fr":"Instrument a sablier","fr-CA":"Instrument a sablier","ja":"漏刻の器","es":"Instrumento de arena"},
+"tm.lead":{"zh-CN":"定一时辰，焚香静坐；劳作小憩，两相宜也。","zh-Hant":"定一時辰，焚香靜坐；勞作小憩，兩相宜也。","en":"Set a span, sit in quiet; for work or rest alike.","en-GB":"Set a span, sit in quiet; for work or rest alike.","en-US":"Set a span, sit in quiet; for work or rest alike.","fr":"Fixez une duree et restez en silence ; pour le travail comme pour le repos.","fr-CA":"Fixez une duree et restez en silence ; pour le travail comme pour le repos.","ja":"ひと時の間を定め、靜かに座す。勞作にも小憩にも相応しい。","es":"Fija un lapso y siéntate en calma; igual sirve para el trabajo que para el descanso."},
+"tm.min":{"zh-CN":"分钟","zh-Hant":"分鐘","en":"Minutes","en-GB":"Minutes","en-US":"Minutes","fr":"Minutes","fr-CA":"Minutes","ja":"分","es":"Minutos"},
+"tm.sec":{"zh-CN":"秒","zh-Hant":"秒","en":"Seconds","en-GB":"Seconds","en-US":"Seconds","fr":"Secondes","fr-CA":"Secondes","ja":"秒","es":"Segundos"},
+"tm.start":{"zh-CN":"开 始","zh-Hant":"開 始","en":"Start","en-GB":"Start","en-US":"Start","fr":"Demarrer","fr-CA":"Demarrer","ja":"開始","es":"Iniciar"},
+"tm.pause":{"zh-CN":"暂 停","zh-Hant":"暫 停","en":"Pause","en-GB":"Pause","en-US":"Pause","fr":"Pause","fr-CA":"Pause","ja":"一時停止","es":"Pausa"},
+"tm.reset":{"zh-CN":"重 置","zh-Hant":"重 置","en":"Reset","en-GB":"Reset","en-US":"Reset","fr":"Reinitialiser","fr-CA":"Reinitialiser","ja":"リセット","es":"Reiniciar"},
+"tm.preset":{"zh-CN":"预设","zh-Hant":"預設","en":"Presets","en-GB":"Presets","en-US":"Presets","fr":"Prereglages","fr-CA":"Prereglages","ja":"プリセット","es":"Preajustes"},
+"tm.done":{"zh-CN":"时间到，且歇一歇。","zh-Hant":"時間到，且歇一歇。","en":"Time is up - rest a moment.","en-GB":"Time is up - rest a moment.","en-US":"Time is up - rest a moment.","fr":"Le temps est ecoule - reposez-vous un instant.","fr-CA":"Le temps est ecoule - reposez-vous un instant.","ja":"時間になりました。ひと息ついてください。","es":"Se acabó el tiempo: descansa un momento."},
+"tm.work":{"zh-CN":"专注","zh-Hant":"專注","en":"Focus","en-GB":"Focus","en-US":"Focus","fr":"Concentration","fr-CA":"Concentration","ja":"集中","es":"Enfoque"},
+"tm.break":{"zh-CN":"小憩","zh-Hant":"小憩","en":"Break","en-GB":"Break","en-US":"Break","fr":"Pause repos","fr-CA":"Pause repos","ja":"小休憩","es":"Descanso"},
+"tm.title":{"zh-CN":"青岚 · 倒计时 · 番茄钟","zh-Hant":"青嵐 · 倒計時 · 番茄鐘","en":"Qinglan · Countdown · Pomodoro","en-GB":"Qinglan · Countdown · Pomodoro","en-US":"Qinglan · Countdown · Pomodoro","fr":"Qinglan · Compte a rebours · Pomodoro","fr-CA":"Qinglan · Compte a rebours · Pomodoro","ja":"青嵐 · カウントダウン・ポモドーロ","es":"Qinglan · Cuenta atrás · Pomodoro"},
+"tm.desc":{"zh-CN":"青岚实用工具 · 倒计时与番茄钟，设定时长专注片刻。","zh-Hant":"青嵐實用工具 · 倒計時與番茄鐘，設定時長專注片刻。","en":"Qinglan tools · Countdown & Pomodoro - set a duration and focus a while.","en-GB":"Qinglan tools · Countdown & Pomodoro - set a duration and focus a while.","en-US":"Qinglan tools · Countdown & Pomodoro - set a duration and focus a while.","fr":"Outils Qinglan · Compte a rebours & Pomodoro - fixez une duree et concentrez-vous un instant.","fr-CA":"Outils Qinglan · Compte a rebours & Pomodoro - fixez une duree et concentrez-vous un instant.","ja":"青嵐ツール · カウントダウン・ポモドーロ - 時間を設定して一時に集中する。","es":"Herramientas Qinglan · Cuenta atrás y Pomodoro: fija una duración y concéntrate un rato."}};</script>
+<style>
+  .tool-shell{max-width:640px;margin:0 auto;text-align:center}
+  .tm-ctrl{background:linear-gradient(160deg,rgba(12,35,52,.9),rgba(13,42,62,.55));border:1px solid rgba(61,181,173,.3);border-radius:14px;padding:2rem 1.5rem;margin-top:1.6rem}
+  .tm-time{font-family:'Noto Serif SC',serif;font-size:4.6rem;font-weight:700;color:#eaf3f3;letter-spacing:.05em;line-height:1;margin:1rem 0 1.6rem;text-shadow:0 0 24px rgba(61,181,173,.35)}
+  .tm-tag{font-size:.9rem;color:#58c9c0;letter-spacing:.2em;min-height:1.4em}
+  .tm-inputs{display:flex;gap:.8rem;justify-content:center;align-items:flex-end;flex-wrap:wrap}
+  .p-field label{display:block;font-size:.86rem;color:#a9cdc9;margin-bottom:.35rem}
+  .p-field input{width:90px;padding:.62rem .8rem;border:1px solid rgba(61,181,173,.4);border-radius:8px;background:#0a2537;color:#eaf3f3;font:inherit;text-align:center}
+  .p-field input:focus{outline:none;border-color:#58c9c0}
+  .tm-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1.4rem}
+  .p-btn{display:inline-block;padding:.7rem 1.6rem;border-radius:9px;background:linear-gradient(135deg,#1c5a76,#3db5ad);color:#06202c;font-weight:700;letter-spacing:.06em;cursor:pointer;border:none;font-size:1rem}
+  .p-btn:hover{filter:brightness(1.08)}
+  .p-btn.ghost{background:transparent;border:1px solid rgba(61,181,173,.5);color:#cfeae6}
+  .tm-presets{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:1.3rem}
+  .tm-presets button{background:rgba(61,181,173,.12);border:1px solid rgba(61,181,173,.4);color:#a9cdc9;border-radius:20px;padding:.35rem .9rem;cursor:pointer;font-size:.86rem}
+  .tm-presets button:hover{background:rgba(61,181,173,.22);color:#eaf3f3}
+  .back-link{margin-top:1.4rem}
+</style>
+<script>window.QL_FLAG_BASE='../';</script>
+</head>
+<body class="grain">
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="../index.html" class="brand" aria-label="青岚首页">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="7" fill="#0d2a3e"/>
+        <path d="M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z" fill="#3db5ad"/>
+        <path d="M5 33 L35 33 L35 36 L5 36 Z" fill="#2a9d97"/>
+      </svg>
+      <div>
+        <div class="brand-name">青岚</div>
+        <div class="brand-sub">QING LAN</div>
+      </div>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="主导航">
+      <a href="../index.html" data-i18n="nav.home">首页</a>
+      <a href="../about.html" data-i18n="nav.about">关于</a>
+      <a href="../works.html" data-i18n="nav.works">作品</a>
+      <a href="../tools.html" class="active" aria-current="page" data-i18n="nav.tools">实用工具</a>
+      <a href="../friends.html" data-i18n="nav.friends">友情链接</a>
+      <a href="../contact.html" data-i18n="nav.contact">联系我们</a>
+      <a href="../tribute.html" class="nav-cta btn btn-seal"><span data-i18n="nav.tribute">赞赏支持</span></a>
+    </nav>
+    <div class="lang-switch" id="langSwitch">
+      <button type="button" class="lang-trigger" id="langTrigger" aria-haspopup="true" aria-expanded="false">
+        <span class="lang-flag" id="langFlag"></span>
+        <span class="lang-name" id="langName"></span>
+        <svg class="lang-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9 L12 15 L18 9"/></svg>
+      </button>
+      <ul class="lang-menu" id="langMenu" role="menu" aria-label="选择语言 / Select language">
+        <li><button type="button" role="menuitem" data-lang="zh-CN" aria-checked="false"><span class="lang-flag">🇨🇳</span><span class="lang-name">简体中文</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="zh-Hant" aria-checked="false"><span class="lang-flag">🇭🇰</span><span class="lang-name">繁體中文</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en" aria-checked="false"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en-GB" aria-checked="false"><span class="lang-flag">🇬🇧</span><span class="lang-name">English (UK)</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en-US" aria-checked="false"><span class="lang-flag">🇺🇸</span><span class="lang-name">English (US)</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="fr" aria-checked="false"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="ja" aria-checked="false"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="es" aria-checked="false"><span class="lang-flag">🇪🇸</span><span class="lang-name">Español</span></button></li>
+      </ul>
+    </div>
+
+    <button class="nav-toggle" aria-label="展开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero" id="top">
+  <div class="container">
+    <p class="crumb" data-reveal><a href="../index.html" data-i18n="crumb.home">首页</a> · <a href="../tools.html" data-i18n="nav.tools">实用工具</a> · <span data-i18n="tools.t4">倒计时 · 番茄钟</span></p>
+    <h1 data-reveal data-i18n="tm.eb1">漏 刻 之 器</h1>
+    <p class="lead" data-reveal data-i18n="tm.lead">定一时辰，焚香静坐；劳作小憩，两相宜也。</p>
+  </div>
+</section>
+
+<section class="section" id="tool">
+  <div class="container">
+    <div class="tool-shell" data-reveal>
+      <div class="tm-ctrl">
+        <div class="tm-tag" id="tmTag">—</div>
+        <div class="tm-time" id="tmTime">25:00</div>
+        <div class="tm-inputs">
+          <div class="p-field"><label for="tmMin" data-i18n="tm.min">分钟</label><input id="tmMin" type="number" value="25" min="0" step="1"></div>
+          <div class="p-field"><label for="tmSec" data-i18n="tm.sec">秒</label><input id="tmSec" type="number" value="0" min="0" max="59" step="1"></div>
+        </div>
+        <div class="tm-presets">
+          <button type="button" data-min="25" data-tag="work" data-i18n="tm.work">专注 25</button>
+          <button type="button" data-min="5" data-tag="break" data-i18n="tm.break">小憩 5</button>
+          <button type="button" data-min="10" data-tag="break" data-i18n="tm.break">小憩 10</button>
+        </div>
+        <div class="tm-btns">
+          <button class="p-btn" id="tmStart" data-i18n="tm.start">开 始</button>
+          <button class="p-btn ghost" id="tmReset" data-i18n="tm.reset">重 置</button>
+        </div>
+      </div>
+      <div class="back-link"><a href="../tools.html" class="btn btn-ghost" data-i18n="nav.tools">← 返回实用工具</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <svg class="mount" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 120 L0 70 C 220 20, 420 90, 680 50 C 900 18, 1160 80, 1440 40 L1440 120 Z" fill="#0a2a3c"/>
+  </svg>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="../index.html" class="brand">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+            <rect width="40" height="40" rx="7" fill="#0d2a3e"/>
+            <path d="M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z" fill="#3db5ad"/>
+          </svg>
+          <div><div class="brand-name">青岚</div><div class="brand-sub">QING LAN</div></div>
+        </a>
+        <p data-i18n="foot.lead">青岚，取青出于蓝之意，寄山水澄明之愿。以青蓝为底，古意为魂，愿以此一隅素净天地，与君共赏四时清趣。</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col1">驻足</h4>
+        <a href="../index.html" data-i18n="foot.home">首页</a>
+        <a href="../about.html" data-i18n="foot.about">关于我们</a>
+        <a href="../works.html" data-i18n="foot.works">作品集</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col2">清谈</h4>
+        <a href="../contact.html" data-i18n="foot.contact">联系我们</a>
+        <a href="../tribute.html" data-i18n="foot.tribute">赞赏支持</a>
+        <a href="../contact.html" data-i18n="foot.inquire">来函相询</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col3">四时</h4>
+        <a href="../works.html" data-i18n="foot.w1">青山 · 佳篇</a>
+        <a href="../works.html" data-i18n="foot.w2">碧水 · 清词</a>
+        <a href="../works.html" data-i18n="foot.w3">归雁 · 长吟</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-i18n="foot.copyright">© 2026 青岚 · 古风雅集</span>
+      <span data-i18n="foot.slogan">山水有清音 · 愿君常驻此青蓝之间</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19 L12 5"/><path d="M5 12 L12 5 L19 12"/></svg>
+</button>
+
+<script>
+window.__T = function (k) {
+  var m = (window.QL_I18N || {})[k];
+  if (!m) return k;
+  var l = localStorage.getItem('ql-lang') || 'zh-CN';
+  return (m[l] != null) ? m[l] : (m.en != null ? m.en : (m['zh-CN'] != null ? m['zh-CN'] : k));
+};
+(function () {
+  var total = 25 * 60, left = total, timer = null, running = false;
+  var timeEl = document.getElementById('tmTime'), tagEl = document.getElementById('tmTag'),
+      btn = document.getElementById('tmStart'), minEl = document.getElementById('tmMin'), secEl = document.getElementById('tmSec');
+  function fmt(s) {
+    var m = Math.floor(s / 60), ss = s % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (ss < 10 ? '0' : '') + ss;
+  }
+  function render() { timeEl.textContent = fmt(Math.max(0, left)); }
+  function setTag(tag) { tagEl.textContent = tag ? window.__T(tag) : ''; }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } running = false; btn.textContent = window.__T('tm.start'); }
+  function start() {
+    if (running) { stop(); return; }
+    if (left <= 0) { readInput(); }
+    running = true; btn.textContent = window.__T('tm.pause');
+    timer = setInterval(function () {
+      left--;
+      render();
+      if (left <= 0) { stop(); setTag(''); timeEl.textContent = window.__T('tm.done'); }
+    }, 1000);
+  }
+  function readInput() {
+    var m = parseInt(minEl.value, 10) || 0, s = parseInt(secEl.value, 10) || 0;
+    left = m * 60 + s; total = left; render(); setTag('');
+  }
+  function reset() { stop(); readInput(); }
+  document.getElementById('tmStart').addEventListener('click', start);
+  document.getElementById('tmReset').addEventListener('click', reset);
+  var presets = document.querySelectorAll('.tm-presets button');
+  for (var i = 0; i < presets.length; i++) {
+    (function (b) {
+      b.addEventListener('click', function () {
+        stop();
+        minEl.value = b.getAttribute('data-min');
+        secEl.value = 0;
+        left = parseInt(b.getAttribute('data-min'), 10) * 60;
+        total = left; render(); setTag(b.getAttribute('data-tag'));
+      });
+    })(presets[i]);
+  }
+  minEl.addEventListener('input', function () { if (!running) readInput(); });
+  secEl.addEventListener('input', function () { if (!running) readInput(); });
+  render();
+})();
+</script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/i18n.js"></script>
+</body>
+</html>

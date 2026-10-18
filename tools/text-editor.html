@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="ed.title">青岚 · 文本编辑器</title>
+<meta name="description" content="青岚实用工具 · 文本编辑器，随写随存，刷新不丢，可导出。" data-i18n-content="ed.desc">
+<link rel="preconnect" href="https://miaoda.feishu.cn" crossorigin>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='7' fill='%230d2a3e'/%3E%3Cpath d='M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z' fill='%233db5ad'/%3E%3Cpath d='M5 33 L35 33 L35 35 L5 35 Z' fill='%232a9d97'/%3E%3C/svg%3E">
+<script>window.QL_FLAG_BASE='../';</script>
+<script>window.QL_I18N = {"ed.eb1":{"zh-CN":"文 房 之 器","zh-Hant":"文 房 之 器","en":"Writing Desk","en-GB":"Writing Desk","en-US":"Writing Desk","fr":"Table d'écriture","fr-CA":"Table d'écriture","ja":"文房の器","es":"Escritorio de escribir"},
+"ed.lead":{"zh-CN":"挥毫落纸，字句自动存留，虽刷新而不失。","zh-Hant":"揮毫落紙，字句自動存留，雖刷新而不失。","en":"Write freely; your words are saved by themselves, safe even after a refresh.","en-GB":"Write freely; your words are saved by themselves, safe even after a refresh.","en-US":"Write freely; your words are saved by themselves, safe even after a refresh.","fr":"Écrivez librement ; vos mots se sauvegardent seuls, à l'abri même après un rechargement.","fr-CA":"Écrivez librement ; vos mots se sauvegardent seuls, à l'abri même après un rechargement.","ja":"筆を揮えば字句は自ずから留まり、更新しても失せない。","es":"Escribe a gusto; tus palabras se guardan solas, a salvo aunque recargues."},
+"ed.save":{"zh-CN":"已保存","zh-Hant":"已保存","en":"Saved","en-GB":"Saved","en-US":"Saved","fr":"Enregistré","fr-CA":"Enregistré","ja":"保存しました","es":"Guardado"},
+"ed.clear":{"zh-CN":"清 空","zh-Hant":"清 空","en":"Clear","en-GB":"Clear","en-US":"Clear","fr":"Effacer","fr-CA":"Effacer","ja":"クリア","es":"Vaciar"},
+"ed.dhtml":{"zh-CN":"下载 .html","zh-Hant":"下載 .html","en":"Save .html","en-GB":"Save .html","en-US":"Save .html","fr":"Télécharger .html","fr-CA":"Télécharger .html","ja":".html を保存","es":"Guardar .html"},
+"ed.dtxt":{"zh-CN":"下载 .txt","zh-Hant":"下載 .txt","en":"Save .txt","en-GB":"Save .txt","en-US":"Save .txt","fr":"Télécharger .txt","fr-CA":"Télécharger .txt","ja":".txt を保存","es":"Guardar .txt"},
+"ed.dlog":{"zh-CN":"下载 .log","zh-Hant":"下載 .log","en":"Save .log","en-GB":"Save .log","en-US":"Save .log","fr":"Télécharger .log","fr-CA":"Télécharger .log","ja":".log を保存","es":"Guardar .log"},
+"ed.done":{"zh-CN":"已下载","zh-Hant":"已下載","en":"Downloaded","en-GB":"Downloaded","en-US":"Downloaded","fr":"Téléchargé","fr-CA":"Téléchargé","ja":"ダウンロードしました","es":"Descargado"},
+"ed.chars":{"zh-CN":"字符","zh-Hant":"字符","en":"Characters","en-GB":"Characters","en-US":"Characters","fr":"Caractères","fr-CA":"Caractères","ja":"文字","es":"Caracteres"},
+"ed.lines":{"zh-CN":"行数","zh-Hant":"行數","en":"Lines","en-GB":"Lines","en-US":"Lines","fr":"Lignes","fr-CA":"Lignes","ja":"行数","es":"Líneas"},
+"ed.placeholder":{"zh-CN":"留白待书，挥毫于此。","zh-Hant":"留白待書，揮毫於此。","en":"Blank for writing — compose here.","en-GB":"Blank for writing — compose here.","en-US":"Blank for writing — compose here.","fr":"Page blanche — écrivez ici.","fr-CA":"Page blanche — écrivez ici.","ja":"空白を待つ — ここで書き綴る。","es":"En blanco — escribe aquí."},
+"ed.title":{"zh-CN":"青岚 · 文本编辑器","zh-Hant":"青嵐 · 文本編輯器","en":"Qinglan · Text Editor","en-GB":"Qinglan · Text Editor","en-US":"Qinglan · Text Editor","fr":"Qinglan · Éditeur de texte","fr-CA":"Qinglan · Éditeur de texte","ja":"青嵐 · テキストエディタ","es":"Qinglan · Editor de texto"},
+"ed.desc":{"zh-CN":"青岚实用工具 · 文本编辑器，随写随存，刷新不丢，可导出。","zh-Hant":"青嵐實用工具 · 文本編輯器，隨寫隨存，刷新不丟，可導出。","en":"Qinglan tools · Text Editor — write freely, saved across refreshes, exportable.","en-GB":"Qinglan tools · Text Editor — write freely, saved across refreshes, exportable.","en-US":"Qinglan tools · Text Editor — write freely, saved across refreshes, exportable.","fr":"Outils Qinglan · Éditeur de texte — écrivez librement, sauvegardé entre rechargements, exportable.","fr-CA":"Outils Qinglan · Éditeur de texte — écrivez librement, sauvegardé entre rechargements, exportable.","ja":"青嵐ツール · テキストエディタ — 自由に書き、更新を跨いで保存し、書き出せる。","es":"Herramientas Qinglan · Editor de texto: escribe libre, guardado entre recargas, exportable."}};</script>
+<style>
+  .tool-shell{max-width:960px;margin:0 auto}
+  .ed-ctrl{background:linear-gradient(160deg,rgba(12,35,52,.9),rgba(13,42,62,.55));border:1px solid rgba(61,181,173,.3);border-radius:14px;padding:1.5rem;margin-top:1.6rem}
+  .ed-area{width:100%;min-height:420px;padding:.9rem 1rem;border:1px solid rgba(61,181,173,.4);border-radius:10px;background:#081c2c;color:#eaf3f3;font:inherit;line-height:1.7;resize:vertical;box-sizing:border-box}
+  .ed-area:focus{outline:none;border-color:#58c9c0}
+  .ed-bar{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;margin-top:1.1rem}
+  .p-btn{display:inline-block;padding:.6rem 1.15rem;border-radius:8px;background:linear-gradient(135deg,#1c5a76,#3db5ad);color:#06202c;font-weight:700;letter-spacing:.02em;cursor:pointer;border:none;font-size:.9rem}
+  .p-btn.ghost{background:transparent;border:1px solid rgba(61,181,173,.5);color:#cfeae6}
+  .p-btn:hover{filter:brightness(1.08)}
+  .ed-msg{color:#58c9c0;font-size:.88rem;min-height:1.2em}
+  .ed-stats{margin-top:.7rem;font-size:.84rem;color:#a9cdc9;display:flex;gap:1.4rem;flex-wrap:wrap}
+  .back-link{margin-top:1.4rem}
+</style>
+</head>
+<body class="grain">
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="../index.html" class="brand" aria-label="青岚首页">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="7" fill="#0d2a3e"/>
+        <path d="M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z" fill="#3db5ad"/>
+        <path d="M5 33 L35 33 L35 36 L5 36 Z" fill="#2a9d97"/>
+      </svg>
+      <div>
+        <div class="brand-name">青岚</div>
+        <div class="brand-sub">QING LAN</div>
+      </div>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="主导航">
+      <a href="../index.html" data-i18n="nav.home">首页</a>
+      <a href="../about.html" data-i18n="nav.about">关于</a>
+      <a href="../works.html" data-i18n="nav.works">作品</a>
+      <a href="../tools.html" class="active" aria-current="page" data-i18n="nav.tools">实用工具</a>
+      <a href="../friends.html" data-i18n="nav.friends">友情链接</a>
+      <a href="../contact.html" data-i18n="nav.contact">联系我们</a>
+      <a href="../tribute.html" class="nav-cta btn btn-seal"><span data-i18n="nav.tribute">赞赏支持</span></a>
+    </nav>
+    <div class="lang-switch" id="langSwitch">
+      <button type="button" class="lang-trigger" id="langTrigger" aria-haspopup="true" aria-expanded="false">
+        <span class="lang-flag" id="langFlag"></span>
+        <span class="lang-name" id="langName"></span>
+        <svg class="lang-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9 L12 15 L18 9"/></svg>
+      </button>
+      <ul class="lang-menu" id="langMenu" role="menu" aria-label="选择语言 / Select language">
+        <li><button type="button" role="menuitem" data-lang="zh-CN" aria-checked="false"><span class="lang-flag">🇨🇳</span><span class="lang-name">简体中文</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="zh-Hant" aria-checked="false"><span class="lang-flag">🇭🇰</span><span class="lang-name">繁體中文</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en" aria-checked="false"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en-GB" aria-checked="false"><span class="lang-flag">🇬🇧</span><span class="lang-name">English (UK)</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en-US" aria-checked="false"><span class="lang-flag">🇺🇸</span><span class="lang-name">English (US)</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="fr" aria-checked="false"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="ja" aria-checked="false"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="es" aria-checked="false"><span class="lang-flag">🇪🇸</span><span class="lang-name">Español</span></button></li>
+      </ul>
+    </div>
+
+    <button class="nav-toggle" aria-label="展开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero" id="top">
+  <div class="container">
+    <p class="crumb" data-reveal><a href="../index.html" data-i18n="crumb.home">首页</a> · <a href="../tools.html" data-i18n="nav.tools">实用工具</a> · <span data-i18n="tools.t7">文本编辑器</span></p>
+    <h1 data-reveal data-i18n="ed.eb1">文 房 之 器</h1>
+    <p class="lead" data-reveal data-i18n="ed.lead">挥毫落纸，字句自动存留，虽刷新而不失。</p>
+  </div>
+</section>
+
+<section class="section" id="tool">
+  <div class="container">
+    <div class="tool-shell" data-reveal>
+      <div class="ed-ctrl">
+        <textarea class="ed-area" id="edArea" placeholder="留白待书，挥毫于此。" data-i18n-placeholder="ed.placeholder"></textarea>
+        <div class="ed-bar">
+          <button class="p-btn" id="edHtml" data-i18n="ed.dhtml">下载 .html</button>
+          <button class="p-btn" id="edTxt" data-i18n="ed.dtxt">下载 .txt</button>
+          <button class="p-btn" id="edLog" data-i18n="ed.dlog">下载 .log</button>
+          <button class="p-btn ghost" id="edClear" data-i18n="ed.clear">清 空</button>
+          <span class="ed-msg" id="edMsg"></span>
+        </div>
+        <div class="ed-stats">
+          <span><span data-i18n="ed.chars">字符</span>：<b id="edChars">0</b></span>
+          <span><span data-i18n="ed.lines">行数</span>：<b id="edLines">0</b></span>
+        </div>
+      </div>
+      <div class="back-link"><a href="../tools.html" class="btn btn-ghost" data-i18n="nav.tools">← 返回实用工具</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <svg class="mount" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 120 L0 70 C 220 20, 420 90, 680 50 C 900 18, 1160 80, 1440 40 L1440 120 Z" fill="#0a2a3c"/>
+  </svg>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="../index.html" class="brand">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+            <rect width="40" height="40" rx="7" fill="#0d2a3e"/>
+            <path d="M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z" fill="#3db5ad"/>
+          </svg>
+          <div><div class="brand-name">青岚</div><div class="brand-sub">QING LAN</div></div>
+        </a>
+        <p data-i18n="foot.lead">青岚，取青出于蓝之意，寄山水澄明之愿。以青蓝为底，古意为魂，愿以此一隅素净天地，与君共赏四时清趣。</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col1">驻足</h4>
+        <a href="../index.html" data-i18n="foot.home">首页</a>
+        <a href="../about.html" data-i18n="foot.about">关于我们</a>
+        <a href="../works.html" data-i18n="foot.works">作品集</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col2">清谈</h4>
+        <a href="../contact.html" data-i18n="foot.contact">联系我们</a>
+        <a href="../tribute.html" data-i18n="foot.tribute">赞赏支持</a>
+        <a href="../contact.html" data-i18n="foot.inquire">来函相询</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col3">四时</h4>
+        <a href="../works.html" data-i18n="foot.w1">青山 · 佳篇</a>
+        <a href="../works.html" data-i18n="foot.w2">碧水 · 清词</a>
+        <a href="../works.html" data-i18n="foot.w3">归雁 · 长吟</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-i18n="foot.copyright">© 2026 青岚 · 古风雅集</span>
+      <span data-i18n="foot.slogan">山水有清音 · 愿君常驻此青蓝之间</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19 L12 5"/><path d="M5 12 L12 5 L19 12"/></svg>
+</button>
+
+<script>
+window.__T = function (k) {
+  var m = (window.QL_I18N || {})[k];
+  if (!m) return k;
+  var l = localStorage.getItem('ql-lang') || 'zh-CN';
+  return (m[l] != null) ? m[l] : (m.en != null ? m.en : (m['zh-CN'] != null ? m['zh-CN'] : k));
+};
+(function () {
+  var KEY = 'ql-editor-v1';
+  var ta = document.getElementById('edArea');
+  var msg = document.getElementById('edMsg');
+  function status(k) { msg.textContent = window.__T(k); setTimeout(function () { msg.textContent = ''; }, 1500); }
+  try { var saved = localStorage.getItem(KEY); if (saved != null) ta.value = saved; } catch (e) {}
+  var t;
+  ta.addEventListener('input', function () {
+    clearTimeout(t);
+    t = setTimeout(function () {
+      try { localStorage.setItem(KEY, ta.value); status('ed.save'); } catch (e) {}
+    }, 300);
+    stats();
+  });
+  function dl(ext, mime) {
+    var content = ta.value;
+    var blob = new Blob([content], { type: mime + ';charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'qinglan-editor-' + new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19) + '.' + ext;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 500);
+    status('ed.done');
+  }
+  function stats() {
+    var v = ta.value;
+    document.getElementById('edChars').textContent = v.length;
+    document.getElementById('edLines').textContent = v ? v.split('\n').length : 0;
+  }
+  document.getElementById('edHtml').addEventListener('click', function () { dl('html', 'text/html'); });
+  document.getElementById('edTxt').addEventListener('click', function () { dl('txt', 'text/plain'); });
+  document.getElementById('edLog').addEventListener('click', function () { dl('log', 'text/plain'); });
+  document.getElementById('edClear').addEventListener('click', function () { ta.value = ''; try { localStorage.setItem(KEY, ''); } catch (e) {} stats(); });
+  stats();
+})();
+</script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/i18n.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="ts.title">青岚 · 文本统计</title>
+<meta name="description" content="青岚实用工具 · 文本统计，统计字数、字符、行数、段落。" data-i18n-content="ts.desc">
+<link rel="preconnect" href="https://miaoda.feishu.cn" crossorigin>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='7' fill='%230d2a3e'/%3E%3Cpath d='M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z' fill='%233db5ad'/%3E%3Cpath d='M5 33 L35 33 L35 35 L5 35 Z' fill='%232a9d97'/%3E%3C/svg%3E">
+<script>window.QL_I18N = {"ts.eb1":{"zh-CN":"文 计 之 器","zh-Hant":"文 計 之 器","en":"Counting Instrument","en-GB":"Counting Instrument","en-US":"Counting Instrument","fr":"Instrument de décompte","fr-CA":"Instrument de décompte","ja":"文計の器","es":"Instrumento de recuento"},
+"ts.lead":{"zh-CN":"落笔于此，字、行、段，其数自明，一目了然。","zh-Hant":"落筆於此，字、行、段，其數自明，一目瞭然。","en":"Write here and the counts of characters, lines and paragraphs reveal themselves at a glance.","en-GB":"Write here and the counts of characters, lines and paragraphs reveal themselves at a glance.","en-US":"Write here and the counts of characters, lines and paragraphs reveal themselves at a glance.","fr":"Écrivez ici et les comptes de caractères, lignes et paragraphes se dévoilent d'un coup d'œil.","fr-CA":"Écrivez ici et les comptes de caractères, lignes et paragraphes se dévoilent d'un coup d'œil.","ja":"ここに書き下せば、字・行・段、その數自ずから明らかに、一目瞭然である。","es":"Escribe aquí y los recuentos de caracteres, líneas y párrafos se revelan de un vistazo."},
+"ts.text":{"zh-CN":"文本","zh-Hant":"文本","en":"Text","en-GB":"Text","en-US":"Text","fr":"Texte","fr-CA":"Texte","ja":"テキスト","es":"Texto"},
+"ts.chars":{"zh-CN":"字符","zh-Hant":"字符","en":"Characters","en-GB":"Characters","en-US":"Characters","fr":"Caractères","fr-CA":"Caractères","ja":"文字","es":"Caracteres"},
+"ts.words":{"zh-CN":"字数","zh-Hant":"字數","en":"Words","en-GB":"Words","en-US":"Words","fr":"Mots","fr-CA":"Mots","ja":"単語数","es":"Palabras"},
+"ts.lines":{"zh-CN":"行数","zh-Hant":"行數","en":"Lines","en-GB":"Lines","en-US":"Lines","fr":"Lignes","fr-CA":"Lignes","ja":"行数","es":"Líneas"},
+"ts.paras":{"zh-CN":"段落","zh-Hant":"段落","en":"Paragraphs","en-GB":"Paragraphs","en-US":"Paragraphs","fr":"Paragraphes","fr-CA":"Paragraphes","ja":"段落","es":"Párrafos"},
+"ts.blank":{"zh-CN":"留白待书，请在此输入或粘贴文本。","zh-Hant":"留白待書，請在此輸入或粘貼文本。","en":"Blank for writing — type or paste your text here.","en-GB":"Blank for writing — type or paste your text here.","en-US":"Blank for writing — type or paste your text here.","fr":"Page blanche — saisissez ou collez votre texte ici.","fr-CA":"Page blanche — saisissez ou collez votre texte ici.","ja":"空白を待つ — ここにテキストを入力または貼り付けしてください。","es":"En blanco — escribe o pega tu texto aquí."},
+"ts.title":{"zh-CN":"青岚 · 文本统计","zh-Hant":"青嵐 · 文本統計","en":"Qinglan · Text Statistics","en-GB":"Qinglan · Text Statistics","en-US":"Qinglan · Text Statistics","fr":"Qinglan · Statistiques de texte","fr-CA":"Qinglan · Statistiques de texte","ja":"青嵐 · テキスト統計","es":"Qinglan · Estadísticas de texto"},
+"ts.desc":{"zh-CN":"青岚实用工具 · 文本统计，统计字数、字符、行数、段落。","zh-Hant":"青嵐實用工具 · 文本統計，統計字數、字符、行數、段落。","en":"Qinglan tools · Text Statistics — count words, characters, lines and paragraphs.","en-GB":"Qinglan tools · Text Statistics — count words, characters, lines and paragraphs.","en-US":"Qinglan tools · Text Statistics — count words, characters, lines and paragraphs.","fr":"Outils Qinglan · Statistiques — comptez mots, caractères, lignes et paragraphes.","fr-CA":"Outils Qinglan · Statistiques — comptez mots, caractères, lignes et paragraphes.","ja":"青嵐ツール · テキスト統計 — 単語・文字・行・段落を数える。","es":"Herramientas Qinglan · Estadísticas: cuenta palabras, caracteres, líneas y párrafos."}};</script>
+<style>
+  .tool-shell{max-width:760px;margin:0 auto}
+  .ts-ctrl{background:linear-gradient(160deg,rgba(12,35,52,.9),rgba(13,42,62,.55));border:1px solid rgba(61,181,173,.3);border-radius:14px;padding:1.6rem;margin-top:1.6rem}
+  .ts-area{width:100%;min-height:280px;padding:.9rem 1rem;border:1px solid rgba(61,181,173,.4);border-radius:10px;background:#081c2c;color:#eaf3f3;font:inherit;line-height:1.7;resize:vertical}
+  .ts-area:focus{outline:none;border-color:#58c9c0}
+  .ts-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.8rem;margin-top:1.2rem}
+  .ts-card{background:rgba(61,181,173,.1);border:1px solid rgba(61,181,173,.3);border-radius:10px;padding:.8rem;text-align:center}
+  .ts-card .num{font-size:1.6rem;font-weight:700;color:#eaf3f3;letter-spacing:.02em}
+  .ts-card .lbl{font-size:.82rem;color:#a9cdc9;margin-top:.2rem}
+  .back-link{margin-top:1.4rem}
+</style>
+<script>window.QL_FLAG_BASE='../';</script>
+</head>
+<body class="grain">
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="../index.html" class="brand" aria-label="青岚首页">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="7" fill="#0d2a3e"/>
+        <path d="M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z" fill="#3db5ad"/>
+        <path d="M5 33 L35 33 L35 36 L5 36 Z" fill="#2a9d97"/>
+      </svg>
+      <div>
+        <div class="brand-name">青岚</div>
+        <div class="brand-sub">QING LAN</div>
+      </div>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="主导航">
+      <a href="../index.html" data-i18n="nav.home">首页</a>
+      <a href="../about.html" data-i18n="nav.about">关于</a>
+      <a href="../works.html" data-i18n="nav.works">作品</a>
+      <a href="../tools.html" class="active" aria-current="page" data-i18n="nav.tools">实用工具</a>
+      <a href="../friends.html" data-i18n="nav.friends">友情链接</a>
+      <a href="../contact.html" data-i18n="nav.contact">联系我们</a>
+      <a href="../tribute.html" class="nav-cta btn btn-seal"><span data-i18n="nav.tribute">赞赏支持</span></a>
+    </nav>
+    <div class="lang-switch" id="langSwitch">
+      <button type="button" class="lang-trigger" id="langTrigger" aria-haspopup="true" aria-expanded="false">
+        <span class="lang-flag" id="langFlag"></span>
+        <span class="lang-name" id="langName"></span>
+        <svg class="lang-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9 L12 15 L18 9"/></svg>
+      </button>
+      <ul class="lang-menu" id="langMenu" role="menu" aria-label="选择语言 / Select language">
+        <li><button type="button" role="menuitem" data-lang="zh-CN" aria-checked="false"><span class="lang-flag">🇨🇳</span><span class="lang-name">简体中文</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="zh-Hant" aria-checked="false"><span class="lang-flag">🇭🇰</span><span class="lang-name">繁體中文</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en" aria-checked="false"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en-GB" aria-checked="false"><span class="lang-flag">🇬🇧</span><span class="lang-name">English (UK)</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en-US" aria-checked="false"><span class="lang-flag">🇺🇸</span><span class="lang-name">English (US)</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="fr" aria-checked="false"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="ja" aria-checked="false"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="es" aria-checked="false"><span class="lang-flag">🇪🇸</span><span class="lang-name">Español</span></button></li>
+      </ul>
+    </div>
+
+    <button class="nav-toggle" aria-label="展开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero" id="top">
+  <div class="container">
+    <p class="crumb" data-reveal><a href="../index.html" data-i18n="crumb.home">首页</a> · <a href="../tools.html" data-i18n="nav.tools">实用工具</a> · <span data-i18n="tools.t6">文本统计</span></p>
+    <h1 data-reveal data-i18n="ts.eb1">文 计 之 器</h1>
+    <p class="lead" data-reveal data-i18n="ts.lead">落笔于此，字、行、段，其数自明。</p>
+  </div>
+</section>
+
+<section class="section" id="tool">
+  <div class="container">
+    <div class="tool-shell" data-reveal>
+      <div class="ts-ctrl">
+        <textarea class="ts-area" id="tsArea" placeholder="留白待书，请在此输入或粘贴文本。"></textarea>
+        <div class="ts-stats">
+          <div class="ts-card"><div class="num" id="tsChars">0</div><div class="lbl" data-i18n="ts.chars">字符</div></div>
+          <div class="ts-card"><div class="num" id="tsWords">0</div><div class="lbl" data-i18n="ts.words">字数</div></div>
+          <div class="ts-card"><div class="num" id="tsLines">0</div><div class="lbl" data-i18n="ts.lines">行数</div></div>
+          <div class="ts-card"><div class="num" id="tsParas">0</div><div class="lbl" data-i18n="ts.paras">段落</div></div>
+        </div>
+      </div>
+      <div class="back-link"><a href="../tools.html" class="btn btn-ghost" data-i18n="nav.tools">← 返回实用工具</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <svg class="mount" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 120 L0 70 C 220 20, 420 90, 680 50 C 900 18, 1160 80, 1440 40 L1440 120 Z" fill="#0a2a3c"/>
+  </svg>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="../index.html" class="brand">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+            <rect width="40" height="40" rx="7" fill="#0d2a3e"/>
+            <path d="M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z" fill="#3db5ad"/>
+          </svg>
+          <div><div class="brand-name">青岚</div><div class="brand-sub">QING LAN</div></div>
+        </a>
+        <p data-i18n="foot.lead">青岚，取青出于蓝之意，寄山水澄明之愿。以青蓝为底，古意为魂，愿以此一隅素净天地，与君共赏四时清趣。</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col1">驻足</h4>
+        <a href="../index.html" data-i18n="foot.home">首页</a>
+        <a href="../about.html" data-i18n="foot.about">关于我们</a>
+        <a href="../works.html" data-i18n="foot.works">作品集</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col2">清谈</h4>
+        <a href="../contact.html" data-i18n="foot.contact">联系我们</a>
+        <a href="../tribute.html" data-i18n="foot.tribute">赞赏支持</a>
+        <a href="../contact.html" data-i18n="foot.inquire">来函相询</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col3">四时</h4>
+        <a href="../works.html" data-i18n="foot.w1">青山 · 佳篇</a>
+        <a href="../works.html" data-i18n="foot.w2">碧水 · 清词</a>
+        <a href="../works.html" data-i18n="foot.w3">归雁 · 长吟</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-i18n="foot.copyright">© 2026 青岚 · 古风雅集</span>
+      <span data-i18n="foot.slogan">山水有清音 · 愿君常驻此青蓝之间</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19 L12 5"/><path d="M5 12 L12 5 L19 12"/></svg>
+</button>
+
+<script>
+window.__T = function (k) {
+  var m = (window.QL_I18N || {})[k];
+  if (!m) return k;
+  var l = localStorage.getItem('ql-lang') || 'zh-CN';
+  return (m[l] != null) ? m[l] : (m.en != null ? m.en : (m['zh-CN'] != null ? m['zh-CN'] : k));
+};
+(function () {
+  var area = document.getElementById('tsArea');
+  function count() {
+    var s = area.value;
+    var chars = s.length;
+    var trimmed = s.trim();
+    var lines = trimmed ? s.split(/\n/).length : 0;
+    var paras = trimmed ? s.split(/\n\s*\n/).filter(function (b) { return b.trim(); }).length : 0;
+    var cjk = (s.match(/[\u4e00-\u9fff]/g) || []).length;
+    var latin = (s.match(/[A-Za-z0-9]+/g) || []).reduce(function (a, b) { return a + b.length; }, 0);
+    var words = cjk + latin;
+    document.getElementById('tsChars').textContent = chars;
+    document.getElementById('tsWords').textContent = words;
+    document.getElementById('tsLines').textContent = lines;
+    document.getElementById('tsParas').textContent = paras;
+  }
+  area.addEventListener('input', count);
+  count();
+})();
+</script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/i18n.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="u.title">青岚 · 单位换算</title>
+<meta name="description" content="青岚实用工具 · 单位换算，长度、温度、重量、速度互转。" data-i18n-content="u.desc">
+<link rel="preconnect" href="https://miaoda.feishu.cn" crossorigin>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='7' fill='%230d2a3e'/%3E%3Cpath d='M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z' fill='%233db5ad'/%3E%3Cpath d='M5 33 L35 33 L35 35 L5 35 Z' fill='%232a9d97'/%3E%3C/svg%3E">
+<script>window.QL_I18N = {"u.eb1":{"zh-CN":"换 算 之 器","zh-Hant":"換 算 之 器","en":"Converting Instrument","en-GB":"Converting Instrument","en-US":"Converting Instrument","fr":"Instrument de conversion","fr-CA":"Instrument de conversion","ja":"換算の器","es":"Instrumento de conversión"},
+"u.lead":{"zh-CN":"度、量、衡、速，诸般单位，随需互转，一按即得。","zh-Hant":"度、量、衡、速，諸般單位，隨需互轉，一按即得。","en":"Lengths, weights, temperatures and speeds — convert between any units with a click.","en-GB":"Lengths, weights, temperatures and speeds — convert between any units with a click.","en-US":"Lengths, weights, temperatures and speeds — convert between any units with a click.","fr":"Longueurs, poids, températures et vitesses — convertissez entre n'importe quelles unités d'un clic.","fr-CA":"Longueurs, poids, températures et vitesses — convertissez entre n'importe quelles unités d'un clic.","ja":"長さ・重さ・温度・速度、様々な単位を一押しで相互換算する。","es":"Longitudes, pesos, temperaturas y velocidades: convierte entre cualquier unidad con un clic."},
+"u.cat":{"zh-CN":"类别","zh-Hant":"類別","en":"Category","en-GB":"Category","en-US":"Category","fr":"Catégorie","fr-CA":"Catégorie","ja":"種類","es":"Categoría"},
+"u.len":{"zh-CN":"长度","zh-Hant":"長度","en":"Length","en-GB":"Length","en-US":"Length","fr":"Longueur","fr-CA":"Longueur","ja":"長さ","es":"Longitud"},
+"u.temp":{"zh-CN":"温度","zh-Hant":"溫度","en":"Temperature","en-GB":"Temperature","en-US":"Temperature","fr":"Température","fr-CA":"Température","ja":"温度","es":"Temperatura"},
+"u.weight":{"zh-CN":"重量","zh-Hant":"重量","en":"Weight","en-GB":"Weight","en-US":"Weight","fr":"Poids","fr-CA":"Poids","ja":"重さ","es":"Peso"},
+"u.speed":{"zh-CN":"速度","zh-Hant":"速度","en":"Speed","en-GB":"Speed","en-US":"Speed","fr":"Vitesse","fr-CA":"Vitesse","ja":"速度","es":"Velocidad"},
+"u.value":{"zh-CN":"数值","zh-Hant":"數值","en":"Value","en-GB":"Value","en-US":"Value","fr":"Valeur","fr-CA":"Valeur","ja":"値","es":"Valor"},
+"u.from":{"zh-CN":"从","zh-Hant":"從","en":"From","en-GB":"From","en-US":"From","fr":"De","fr-CA":"De","ja":"元","es":"De"},
+"u.to":{"zh-CN":"到","zh-Hant":"到","en":"To","en-GB":"To","en-US":"To","fr":"Vers","fr-CA":"Vers","ja":"先","es":"A"},
+"u.result":{"zh-CN":"结果","zh-Hant":"結果","en":"Result","en-GB":"Result","en-US":"Result","fr":"Résultat","fr-CA":"Résultat","ja":"結果","es":"Resultado"},
+"u.err":{"zh-CN":"请输入有效数值。","zh-Hant":"請輸入有效數值。","en":"Please enter a valid number.","en-GB":"Please enter a valid number.","en-US":"Please enter a valid number.","fr":"Veuillez saisir un nombre valide.","fr-CA":"Veuillez saisir un nombre valide.","ja":"有効な数値を入力してください。","es":"Ingresa un número válido."},
+"u.title":{"zh-CN":"青岚 · 单位换算","zh-Hant":"青嵐 · 單位換算","en":"Qinglan · Unit Converter","en-GB":"Qinglan · Unit Converter","en-US":"Qinglan · Unit Converter","fr":"Qinglan · Convertisseur d'unités","fr-CA":"Qinglan · Convertisseur d'unités","ja":"青嵐 · 単位換算","es":"Qinglan · Conversor de unidades"},
+"u.desc":{"zh-CN":"青岚实用工具 · 单位换算，长度、温度、重量、速度互转。","zh-Hant":"青嵐實用工具 · 單位換算，長度、溫度、重量、速度互轉。","en":"Qinglan tools · Unit Converter — convert lengths, temperatures, weights and speeds.","en-GB":"Qinglan tools · Unit Converter — convert lengths, temperatures, weights and speeds.","en-US":"Qinglan tools · Unit Converter — convert lengths, temperatures, weights and speeds.","fr":"Outils Qinglan · Convertisseur — convertissez longueurs, températures, poids et vitesses.","fr-CA":"Outils Qinglan · Convertisseur — convertissez longueurs, températures, poids et vitesses.","ja":"青嵐ツール · 単位換算 — 長さ・温度・重さ・速度を変換する。","es":"Herramientas Qinglan · Conversor: convierte longitudes, temperaturas, pesos y velocidades."}};</script>
+<style>
+  .tool-shell{max-width:680px;margin:0 auto}
+  .u-ctrl{background:linear-gradient(160deg,rgba(12,35,52,.9),rgba(13,42,62,.55));border:1px solid rgba(61,181,173,.3);border-radius:14px;padding:1.5rem;margin-top:1.6rem}
+  .r-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.8rem}
+  .p-field label{display:block;font-size:.86rem;color:#a9cdc9;margin-bottom:.35rem}
+  .p-field input,.p-field select{width:100%;padding:.62rem .8rem;border:1px solid rgba(61,181,173,.4);border-radius:8px;background:#0a2537;color:#eaf3f3;font:inherit}
+  .p-field input:focus,.p-field select:focus{outline:none;border-color:#58c9c0}
+  .u-res{margin-top:1.2rem;border:1px solid rgba(61,181,173,.28);border-radius:12px;padding:1.1rem;background:#081c2c;text-align:center}
+  .u-res .big{font-size:1.5rem;color:#eaf3f3;font-weight:600;letter-spacing:.02em}
+  .u-res .sub{font-size:.86rem;color:rgba(169,205,201,.8);margin-top:.3rem}
+  .back-link{margin-top:1.4rem}
+</style>
+<script>window.QL_FLAG_BASE='../';</script>
+</head>
+<body class="grain">
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="../index.html" class="brand" aria-label="青岚首页">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="7" fill="#0d2a3e"/>
+        <path d="M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z" fill="#3db5ad"/>
+        <path d="M5 33 L35 33 L35 36 L5 36 Z" fill="#2a9d97"/>
+      </svg>
+      <div>
+        <div class="brand-name">青岚</div>
+        <div class="brand-sub">QING LAN</div>
+      </div>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="主导航">
+      <a href="../index.html" data-i18n="nav.home">首页</a>
+      <a href="../about.html" data-i18n="nav.about">关于</a>
+      <a href="../works.html" data-i18n="nav.works">作品</a>
+      <a href="../tools.html" class="active" aria-current="page" data-i18n="nav.tools">实用工具</a>
+      <a href="../friends.html" data-i18n="nav.friends">友情链接</a>
+      <a href="../contact.html" data-i18n="nav.contact">联系我们</a>
+      <a href="../tribute.html" class="nav-cta btn btn-seal"><span data-i18n="nav.tribute">赞赏支持</span></a>
+    </nav>
+    <div class="lang-switch" id="langSwitch">
+      <button type="button" class="lang-trigger" id="langTrigger" aria-haspopup="true" aria-expanded="false">
+        <span class="lang-flag" id="langFlag"></span>
+        <span class="lang-name" id="langName"></span>
+        <svg class="lang-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9 L12 15 L18 9"/></svg>
+      </button>
+      <ul class="lang-menu" id="langMenu" role="menu" aria-label="选择语言 / Select language">
+        <li><button type="button" role="menuitem" data-lang="zh-CN" aria-checked="false"><span class="lang-flag">🇨🇳</span><span class="lang-name">简体中文</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="zh-Hant" aria-checked="false"><span class="lang-flag">🇭🇰</span><span class="lang-name">繁體中文</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en" aria-checked="false"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en-GB" aria-checked="false"><span class="lang-flag">🇬🇧</span><span class="lang-name">English (UK)</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en-US" aria-checked="false"><span class="lang-flag">🇺🇸</span><span class="lang-name">English (US)</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="fr" aria-checked="false"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="ja" aria-checked="false"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="es" aria-checked="false"><span class="lang-flag">🇪🇸</span><span class="lang-name">Español</span></button></li>
+      </ul>
+    </div>
+
+    <button class="nav-toggle" aria-label="展开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero" id="top">
+  <div class="container">
+    <p class="crumb" data-reveal><a href="../index.html" data-i18n="crumb.home">首页</a> · <a href="../tools.html" data-i18n="nav.tools">实用工具</a> · <span data-i18n="tools.t3">单位换算</span></p>
+    <h1 data-reveal data-i18n="u.eb1">换 算 之 器</h1>
+    <p class="lead" data-reveal data-i18n="u.lead">度、量、衡、速，诸般单位，随需互转。</p>
+  </div>
+</section>
+
+<section class="section" id="tool">
+  <div class="container">
+    <div class="tool-shell" data-reveal>
+      <div class="u-ctrl">
+        <div class="r-row">
+          <div class="p-field"><label for="ucat" data-i18n="u.cat">类别</label>
+            <select id="ucat">
+              <option value="length" data-i18n="u.len">长度</option>
+              <option value="temp" data-i18n="u.temp">温度</option>
+              <option value="weight" data-i18n="u.weight">重量</option>
+              <option value="speed" data-i18n="u.speed">速度</option>
+            </select>
+          </div>
+          <div class="p-field"><label for="uvalue" data-i18n="u.value">数值</label><input id="uvalue" type="number" value="1" step="any"></div>
+          <div class="p-field"><label for="ufrom" data-i18n="u.from">从</label><select id="ufrom"></select></div>
+          <div class="p-field"><label for="uto" data-i18n="u.to">到</label><select id="uto"></select></div>
+        </div>
+      </div>
+      <div class="u-res" id="uRes">
+        <div class="big" id="uOut">—</div>
+        <div class="sub" id="uMsg" data-i18n="u.result">结果</div>
+      </div>
+      <div class="back-link"><a href="../tools.html" class="btn btn-ghost" data-i18n="nav.tools">← 返回实用工具</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <svg class="mount" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 120 L0 70 C 220 20, 420 90, 680 50 C 900 18, 1160 80, 1440 40 L1440 120 Z" fill="#0a2a3c"/>
+  </svg>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="../index.html" class="brand">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+            <rect width="40" height="40" rx="7" fill="#0d2a3e"/>
+            <path d="M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z" fill="#3db5ad"/>
+          </svg>
+          <div><div class="brand-name">青岚</div><div class="brand-sub">QING LAN</div></div>
+        </a>
+        <p data-i18n="foot.lead">青岚，取青出于蓝之意，寄山水澄明之愿。以青蓝为底，古意为魂，愿以此一隅素净天地，与君共赏四时清趣。</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col1">驻足</h4>
+        <a href="../index.html" data-i18n="foot.home">首页</a>
+        <a href="../about.html" data-i18n="foot.about">关于我们</a>
+        <a href="../works.html" data-i18n="foot.works">作品集</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col2">清谈</h4>
+        <a href="../contact.html" data-i18n="foot.contact">联系我们</a>
+        <a href="../tribute.html" data-i18n="foot.tribute">赞赏支持</a>
+        <a href="../contact.html" data-i18n="foot.inquire">来函相询</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col3">四时</h4>
+        <a href="../works.html" data-i18n="foot.w1">青山 · 佳篇</a>
+        <a href="../works.html" data-i18n="foot.w2">碧水 · 清词</a>
+        <a href="../works.html" data-i18n="foot.w3">归雁 · 长吟</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-i18n="foot.copyright">© 2026 青岚 · 古风雅集</span>
+      <span data-i18n="foot.slogan">山水有清音 · 愿君常驻此青蓝之间</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19 L12 5"/><path d="M5 12 L12 5 L19 12"/></svg>
+</button>
+
+<script>
+window.__T = function (k) {
+  var m = (window.QL_I18N || {})[k];
+  if (!m) return k;
+  var l = localStorage.getItem('ql-lang') || 'zh-CN';
+  return (m[l] != null) ? m[l] : (m.en != null ? m.en : (m['zh-CN'] != null ? m['zh-CN'] : k));
+};
+(function () {
+  var UNITS = {
+    length: [['m', 'm'], ['km', 'km'], ['cm', 'cm'], ['mm', 'mm'], ['mile', 'mi'], ['yard', 'yd'], ['foot', 'ft'], ['inch', 'in']],
+    temp: [['c', '°C'], ['f', '°F'], ['k', 'K']],
+    weight: [['kg', 'kg'], ['g', 'g'], ['mg', 'mg'], ['lb', 'lb'], ['oz', 'oz'], ['ton', 't']],
+    speed: [['mps', 'm/s'], ['kmh', 'km/h'], ['mph', 'mph'], ['knot', 'kn'], ['fts', 'ft/s']]
+  };
+  function toBase(cat, u, v) {
+    if (cat === 'length') { var L = { m: 1, km: 1000, cm: .01, mm: .001, mile: 1609.344, yard: .9144, foot: .3048, inch: .0254 }; return v * L[u]; }
+    if (cat === 'temp') { if (u === 'c') return v; if (u === 'f') return (v - 32) * 5 / 9; return v - 273.15; }
+    if (cat === 'weight') { var W = { kg: 1, g: .001, mg: .000001, lb: .45359237, oz: .0283495231, ton: 1000 }; return v * W[u]; }
+    var S = { mps: 1, kmh: 1 / 3.6, mph: .44704, knot: .514444, fts: .3048 };
+    return v * S[u];
+  }
+  function fromBase(cat, u, v) {
+    if (cat === 'length') { var L = { m: 1, km: 1000, cm: .01, mm: .001, mile: 1609.344, yard: .9144, foot: .3048, inch: .0254 }; return v / L[u]; }
+    if (cat === 'temp') { if (u === 'c') return v; if (u === 'f') return v * 9 / 5 + 32; return v + 273.15; }
+    if (cat === 'weight') { var W = { kg: 1, g: .001, mg: .000001, lb: .45359237, oz: .0283495231, ton: 1000 }; return v / W[u]; }
+    var S = { mps: 1, kmh: 1 / 3.6, mph: .44704, knot: .514444, fts: .3048 };
+    return v / S[u];
+  }
+  var ucat = document.getElementById('ucat'), ufrom = document.getElementById('ufrom'), uto = document.getElementById('uto');
+  function fillUnits() {
+    var cat = ucat.value, list = UNITS[cat];
+    ufrom.innerHTML = ''; uto.innerHTML = '';
+    for (var i = 0; i < list.length; i++) {
+      var o1 = document.createElement('option'); o1.value = list[i][0]; o1.textContent = list[i][1]; ufrom.appendChild(o1);
+      var o2 = document.createElement('option'); o2.value = list[i][0]; o2.textContent = list[i][1]; uto.appendChild(o2);
+    }
+    uto.value = list[list.length > 1 ? 1 : 0][0];
+  }
+  function convert() {
+    var v = parseFloat(document.getElementById('uvalue').value);
+    if (!isFinite(v)) { document.getElementById('uOut').textContent = window.__T('u.err'); return; }
+    var b = toBase(ucat.value, ufrom.value, v);
+    var out = fromBase(ucat.value, uto.value, b);
+    document.getElementById('uOut').textContent = Number(out.toPrecision(10)).toString();
+  }
+  ucat.addEventListener('change', function () { fillUnits(); convert(); });
+  ufrom.addEventListener('change', convert);
+  uto.addEventListener('change', convert);
+  document.getElementById('uvalue').addEventListener('input', convert);
+  fillUnits(); convert();
+})();
+</script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/i18n.js"></script>
+</body>
+</html>

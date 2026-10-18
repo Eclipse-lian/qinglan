@@ -1,0 +1,131 @@
+{
+  "src": "C:\\Users\\user\\Desktop\\源码\\tools\\func-plot.html",
+  "url": "file:///C:/Users/user/Desktop/%E6%BA%90%E7%A0%81/tools/func-plot.html",
+  "outdir": "C:\\Users\\user\\Desktop\\源码\\tools\\_shots",
+  "include": [
+    "lint",
+    "screenshots",
+    "structure"
+  ],
+  "shots": {
+    "desktop": {
+      "screenshot": "C:\\Users\\user\\Desktop\\源码\\tools\\_shots\\func-plot_desktop.jpg",
+      "screenshotBytes": 69421,
+      "truncated": false,
+      "structure": {
+        "title": "青岚 · 函数绘图",
+        "firstH1": "绘 图 之 器",
+        "viewport": {
+          "w": 1416,
+          "h": 761
+        },
+        "fullpage": {
+          "w": 1416,
+          "h": 2102
+        },
+        "counts": {
+          "section": 2,
+          "h1": 1,
+          "h2": 0,
+          "img": 10,
+          "canvas": 1,
+          "svg": 5,
+          "links": 21,
+          "buttons": 16
+        }
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "horizontalOverflow": [],
+      "resourceErrors": [],
+      "reportSource": "cdp"
+    },
+    "mobile": {
+      "screenshot": "C:\\Users\\user\\Desktop\\源码\\tools\\_shots\\func-plot_mobile.jpg",
+      "screenshotBytes": 84134,
+      "truncated": false,
+      "structure": {
+        "title": "青岚 · 函数绘图",
+        "firstH1": "绘 图 之 器",
+        "viewport": {
+          "w": 492,
+          "h": 705
+        },
+        "fullpage": {
+          "w": 492,
+          "h": 2725
+        },
+        "counts": {
+          "section": 2,
+          "h1": 1,
+          "h2": 0,
+          "img": 10,
+          "canvas": 1,
+          "svg": 5,
+          "links": 21,
+          "buttons": 16
+        }
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "horizontalOverflow": [],
+      "resourceErrors": [],
+      "reportSource": "cdp"
+    }
+  },
+  "engine": "chrome_cli",
+  "chromiumExec": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "engineDegraded": true,
+  "engineDegradedReason": "playwright 未装",
+  "elapsedSec": 18.98,
+  "schemaVersion": 2,
+  "status": "pass",
+  "engineInfo": {
+    "name": "chrome_cli",
+    "degraded": true,
+    "degradedReasons": [
+      "playwright 未装"
+    ]
+  },
+  "input": {
+    "original": "C:\\Users\\user\\Desktop\\源码\\tools\\func-plot.html",
+    "resolvedPath": "C:\\Users\\user\\Desktop\\源码\\tools\\func-plot.html",
+    "baseUrl": "file:///C:/Users/user/Desktop/%E6%BA%90%E7%A0%81/tools/func-plot.html",
+    "protocol": "file",
+    "cwd": "C:\\Users\\user\\Desktop\\源码",
+    "mediaMode": {
+      "reducedMotion": true
+    }
+  },
+  "artifacts": {
+    "screenshots": [
+      {
+        "viewport": "desktop",
+        "path": "C:\\Users\\user\\Desktop\\源码\\tools\\_shots\\func-plot_desktop.jpg",
+        "size": 69421,
+        "visualCoverage": {
+          "complete": true,
+          "reason": null
+        }
+      },
+      {
+        "viewport": "mobile",
+        "path": "C:\\Users\\user\\Desktop\\源码\\tools\\_shots\\func-plot_mobile.jpg",
+        "size": 84134,
+        "visualCoverage": {
+          "complete": true,
+          "reason": null
+        }
+      }
+    ]
+  },
+  "summary": {
+    "blocker": 0,
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "findings": [],
+  "prioritizedActions": [],
+  "reportPath": "C:\\Users\\user\\Desktop\\源码\\tools\\_shots\\report.json"
+}

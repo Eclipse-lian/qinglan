@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="tools.title">青岚 · 实用工具</title>
+<meta name="description" content="青岚古风雅集 · 实用工具，函数绘图、随机数生成等百工之器，随取随用。" data-i18n-content="tools.desc">
+<link rel="preconnect" href="https://miaoda.feishu.cn" crossorigin>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='7' fill='%230d2a3e'/%3E%3Cpath d='M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z' fill='%233db5ad'/%3E%3Cpath d='M5 33 L35 33 L35 35 L5 35 Z' fill='%232a9d97'/%3E%3C/svg%3E">
+<script>window.QL_I18N = {"tools.lead":{"zh-CN":"百工之器，随取随用。绘图、计数、换算、计时，诸般小用，供君偶一为之，聊解烦冗。","zh-Hant":"百工之器，隨取隨用。繪圖、計數、換算、計時，諸般小用，供君偶一為之，聊解煩冗。","en":"Handy tools, ready at hand — plotting, counting, converting, timing. Small aids for a passing need, to ease a busy hour.","en-GB":"Handy tools, ready at hand — plotting, counting, converting, timing. Small aids for a passing need, to ease a busy hour.","en-US":"Handy tools, ready at hand — plotting, counting, converting, timing. Small aids for a passing need, to ease a busy hour.","fr":"Outils commodes, prêts à l'emploi — tracer, compter, convertir, chronométrer. De petits secours pour un besoin passager.","fr-CA":"Outils commodes, prêts à l'emploi — tracer, compter, convertir, chronométrer. De petits secours pour un besoin passager.","ja":"百工の器、隨取隨用す。繪圖・計數・換算・計時、諸般の小用、君の偶發の為に供し、煩冗を聊か解く。","es":"Herramientas prácticas, listas para usar: dibujar, contar, convertir, cronometrar. Pequeños auxilios para una necesidad pasajera."},"tools.eb1":{"zh-CN":"百 工 之 器","zh-Hant":"百 工 之 器","en":"Handy Instruments","en-GB":"Handy Instruments","en-US":"Handy Instruments","fr":"Instruments commodes","fr-CA":"Instruments commodes","ja":"百工の器","es":"Instrumentos prácticos"},
+"tools.t1":{"zh-CN":"函数绘图","zh-Hant":"函數繪圖","en":"Function Plot","en-GB":"Function Plot","en-US":"Function Plot","fr":"Tracé de fonction","fr-CA":"Tracé de fonction","ja":"関数描画","es":"Gráfica de función"},
+"tools.d1":{"zh-CN":"输入表达式，即刻绘制函数曲线，如 y = sin(x)、y = x²。","zh-Hant":"輸入表達式，即刻繪製函數曲線，如 y = sin(x)、y = x²。","en":"Enter an expression and plot its curve at once — e.g. y = sin(x), y = x².","en-GB":"Enter an expression and plot its curve at once — e.g. y = sin(x), y = x².","en-US":"Enter an expression and plot its curve instantly — e.g. y = sin(x), y = x².","fr":"Saisissez une expression et tracez sa courbe aussitôt — p. ex. y = sin(x), y = x².","fr-CA":"Saisissez une expression et tracez sa courbe aussitôt — p. ex. y = sin(x), y = x².","ja":"式を入力し、即座に曲線を描く。例：y = sin(x)、y = x²。","es":"Ingresa una expresión y dibuja su curva al instante — p. ej. y = sin(x), y = x²."},
+"tools.t2":{"zh-CN":"随机数生成","zh-Hant":"隨機數生成","en":"Random Number","en-GB":"Random Number","en-US":"Random Number","fr":"Nombre aléatoire","fr-CA":"Nombre aléatoire","ja":"乱数生成","es":"Número aleatorio"},
+"tools.d2":{"zh-CN":"设定范围与个数，生成一批随机整数或小数。","zh-Hant":"設定範圍與個數，生成一批隨機整數或小數。","en":"Set a range and count, and generate a batch of random integers or decimals.","en-GB":"Set a range and count, and generate a batch of random integers or decimals.","en-US":"Set a range and count, and generate a batch of random integers or decimals.","fr":"Définissez une plage et un nombre, et générez une série d'entiers ou de décimaux aléatoires.","fr-CA":"Définissez une plage et un nombre, et générez une série d'entiers ou de décimaux aléatoires.","ja":"範囲と個数を設定し、ランダムな整数・小数を一括生成する。","es":"Establece un rango y una cantidad, y genera una tanda de enteros o decimales aleatorios."},
+"tools.t3":{"zh-CN":"单位换算","zh-Hant":"單位換算","en":"Unit Converter","en-GB":"Unit Converter","en-US":"Unit Converter","fr":"Convertisseur d'unités","fr-CA":"Convertisseur d'unités","ja":"単位換算","es":"Conversor de unidades"},
+"tools.d3":{"zh-CN":"长度、温度、重量、速度，诸般单位随需互转。","zh-Hant":"長度、溫度、重量、速度，諸般單位隨需互轉。","en":"Convert among lengths, temperatures, weights and speeds as you need.","en-GB":"Convert among lengths, temperatures, weights and speeds as you need.","en-US":"Convert among lengths, temperatures, weights and speeds as you need.","fr":"Convertissez longueurs, températures, poids et vitesses selon vos besoins.","fr-CA":"Convertissez longueurs, températures, poids et vitesses selon vos besoins.","ja":"長さ・温度・重さ・速度など、様々な単位を随時換算する。","es":"Convierte longitudes, temperaturas, pesos y velocidades según lo necesites."},
+"tools.t4":{"zh-CN":"倒计时 · 番茄钟","zh-Hant":"倒計時 · 番茄鐘","en":"Countdown · Pomodoro","en-GB":"Countdown · Pomodoro","en-US":"Countdown · Pomodoro","fr":"Compte à rebours · Pomodoro","fr-CA":"Compte à rebours · Pomodoro","ja":"カウントダウン・ポモドーロ","es":"Cuenta atrás · Pomodoro"},
+"tools.d4":{"zh-CN":"设定时长，专注片刻；亦可作番茄钟，劳作小憩两相宜。","zh-Hant":"設定時長，專注片刻；亦可作番茄鐘，勞作小憩兩相宜。","en":"Set a duration and focus a while; it also serves as a Pomodoro for work and rest alike.","en-GB":"Set a duration and focus a while; it also serves as a Pomodoro for work and rest alike.","en-US":"Set a duration and focus a while; it also serves as a Pomodoro for work and rest alike.","fr":"Fixez une durée et concentrez-vous un instant ; il sert aussi de Pomodoro, pour le travail comme le repos.","fr-CA":"Fixez une durée et concentrez-vous un instant ; il sert aussi de Pomodoro, pour le travail comme le repos.","ja":"時間を設定して一時に專注し、ポモドーロとしても、勞作と小憩に両便。","es":"Fija una duración y concéntrate un rato; también sirve como Pomodoro, para el trabajo y el descanso."},
+"tools.t5":{"zh-CN":"密码生成","zh-Hant":"密碼生成","en":"Password Generator","en-GB":"Password Generator","en-US":"Password Generator","fr":"Générateur de mots de passe","fr-CA":"Générateur de mots de passe","ja":"パスワード生成","es":"Generador de contraseñas"},
+"tools.d5":{"zh-CN":"按长度与字符集生成强密码，一键复制。","zh-Hant":"按長度與字符集生成強密碼，一鍵複製。","en":"Generate a strong password by length and character set, and copy it in one click.","en-GB":"Generate a strong password by length and character set, and copy it in one click.","en-US":"Generate a strong password by length and character set, and copy it in one click.","fr":"Générez un mot de passe fort selon la longueur et le jeu de caractères, et copiez-le d'un clic.","fr-CA":"Générez un mot de passe fort selon la longueur et le jeu de caractères, et copiez-le d'un clic.","ja":"長さと文字集合に応じて強力なパスワードを生成し、ワンクリックで複製する。","es":"Genera una contraseña fuerte según la longitud y el juego de caracteres, y cópiala con un clic."},
+"tools.t6":{"zh-CN":"文本统计","zh-Hant":"文本統計","en":"Text Statistics","en-GB":"Text Statistics","en-US":"Text Statistics","fr":"Statistiques de texte","fr-CA":"Statistiques de texte","ja":"テキスト統計","es":"Estadísticas de texto"},
+"tools.d6":{"zh-CN":"统计字数、字符、行数、段落，落笔之数一目了然。","zh-Hant":"統計字數、字符、行數、段落，落筆之數一目瞭然。","en":"Count words, characters, lines and paragraphs at a glance as you write.","en-GB":"Count words, characters, lines and paragraphs at a glance as you write.","en-US":"Count words, characters, lines and paragraphs at a glance as you write.","fr":"Comptez mots, caractères, lignes et paragraphes d'un coup d'œil.","fr-CA":"Comptez mots, caractères, lignes et paragraphes d'un coup d'œil.","ja":"文字数・文字・行数・段落を一目で統計する。","es":"Cuenta palabras, caracteres, líneas y párrafos de un vistazo."},
+"tools.title":{"zh-CN":"青岚 · 实用工具","zh-Hant":"青嵐 · 實用工具","en":"Qinglan · Tools","en-GB":"Qinglan · Tools","en-US":"Qinglan · Tools","fr":"Qinglan · Outils","fr-CA":"Qinglan · Outils","ja":"青嵐 · ツール","es":"Qinglan · Herramientas"},
+"tools.desc":{"zh-CN":"青岚古风雅集 · 实用工具，函数绘图、随机数生成等百工之器，随取随用。","zh-Hant":"青嵐古風雅集 · 實用工具，函數繪圖、隨機數生成等百工之器，隨取隨用。","en":"Qinglan Antique Verse · handy tools — function plotting, random numbers and more, ready for use.","en-GB":"Qinglan Antique Verse · handy tools — function plotting, random numbers and more, ready for use.","en-US":"Qinglan Antique Verse · handy tools — function plotting, random numbers and more, ready for use.","fr":"Qinglan Vers antiques · outils commodes — tracé de fonctions, nombres aléatoires et plus encore.","fr-CA":"Qinglan Vers antiques · outils commodes — tracé de fonctions, nombres aléatoires et plus encore.","ja":"青嵐古風雅集 · 實用工具、関数描画・乱数生成等の百工の器、隨取隨用。","es":"Qinglan Versos antiguos · herramientas prácticas: gráfica de funciones, números aleatorios y más."},"tools.titleH": {"zh-CN": "百<span class=\"grad\">工之器</span>", "zh-Hant": "百<span class=\"grad\">工之器</span>", "en": "A Hundred <span class=\"grad\">Handy Tools</span>", "en-GB": "A Hundred <span class=\"grad\">Handy Tools</span>", "en-US": "A Hundred <span class=\"grad\">Handy Tools</span>", "fr": "Cent <span class=\"grad\">outils commodes</span>", "fr-CA": "Cent <span class=\"grad\">outils commodes</span>", "ja": "百<span class=\"grad\">工の器</span>", "es": "Cien <span class=\"grad\">herramientas</span>"}, "tools.gridT": {"zh-CN": "诸般<span class=\"mark\">小用</span>", "zh-Hant": "諸般<span class=\"mark\">小用</span>", "en": "All Manner of <span class=\"mark\">Small Aids</span>", "en-GB": "All Manner of <span class=\"mark\">Small Aids</span>", "en-US": "All Manner of <span class=\"mark\">Small Aids</span>", "fr": "Toutes sortes de <span class=\"mark\">petits secours</span>", "fr-CA": "Toutes sortes de <span class=\"mark\">petits secours</span>", "ja": "諸般の<span class=\"mark\">小用</span>", "es": "Toda clase de <span class=\"mark\">pequeños auxilios</span>"},"tools.t7":{"zh-CN":"文本编辑器","zh-Hant":"文本編輯器","en":"Text Editor","en-GB":"Text Editor","en-US":"Text Editor","fr":"Éditeur de texte","fr-CA":"Éditeur de texte","ja":"テキストエディタ","es":"Editor de texto"},"tools.d7":{"zh-CN":"随写随存，刷新不丢，可导出 .html / .txt / .log。","zh-Hant":"隨寫隨存，刷新不丟，可導出 .html / .txt / .log。","en":"Write freely, saved across refreshes, exportable as .html / .txt / .log.","en-GB":"Write freely, saved across refreshes, exportable as .html / .txt / .log.","en-US":"Write freely, saved across refreshes, exportable as .html / .txt / .log.","fr":"Écrivez librement, sauvegardé entre rechargements, exportable en .html / .txt / .log.","fr-CA":"Écrivez librement, sauvegardé entre rechargements, exportable en .html / .txt / .log.","ja":"自由に書き、更新を跨いで保存し、.html / .txt / .log に書き出せる。","es":"Escribe libre, guardado entre recargas, exportable como .html / .txt / .log."}};</script>
+<style>
+  .tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.4rem;margin-top:2.2rem}
+  .tool-card{position:relative;display:flex;flex-direction:column;gap:.7rem;padding:1.6rem 1.4rem 1.5rem;border:1px solid rgba(61,181,173,.28);border-radius:14px;background:linear-gradient(160deg,rgba(12,35,52,.92),rgba(13,42,62,.6));transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;overflow:hidden}
+  .tool-card::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 100% 0,rgba(61,181,173,.14),transparent 55%);opacity:0;transition:opacity .3s}
+  .tool-card:hover{transform:translateY(-6px);border-color:rgba(61,181,173,.6);box-shadow:0 14px 34px rgba(3,20,32,.5)}
+  .tool-card:hover::before{opacity:1}
+  .tool-card:hover .t-ic{transform:scale(1.08)}
+  .t-ic{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#1c5a76,#3db5ad);display:flex;align-items:center;justify-content:center;color:#eaf6f5;transition:transform .25s ease}
+  .t-ic svg{width:24px;height:24px}
+  .t-name{font-size:1.22rem;font-weight:600;color:#eaf3f3}
+  .t-desc{font-size:.92rem;line-height:1.7;color:rgba(226,240,240,.72);min-height:3.2em}
+  .t-go{margin-top:auto;font-size:.86rem;color:var(--cyan-300,#58c9c0);letter-spacing:.06em}
+  .t-go svg{width:14px;height:14px;vertical-align:-2px}
+  .t-link{position:absolute;inset:0;z-index:1}
+</style>
+</head>
+<body class="grain">
+
+<!-- ===== 导航栏 ===== -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="index.html" class="brand" aria-label="青岚首页">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="7" fill="#0d2a3e"/>
+        <path d="M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z" fill="#3db5ad"/>
+        <path d="M5 33 L35 33 L35 36 L5 36 Z" fill="#2a9d97"/>
+      </svg>
+      <div>
+        <div class="brand-name">青岚</div>
+        <div class="brand-sub">QING LAN</div>
+      </div>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="主导航">
+      <a href="index.html" data-i18n="nav.home">首页</a>
+      <a href="about.html" data-i18n="nav.about">关于</a>
+      <a href="works.html" data-i18n="nav.works">作品</a>
+      <a href="tools.html" class="active" aria-current="page" data-i18n="nav.tools">实用工具</a>
+      <a href="friends.html" data-i18n="nav.friends">友情链接</a>
+      <a href="contact.html" data-i18n="nav.contact">联系我们</a>
+      <a href="tribute.html" class="nav-cta btn btn-seal"><span data-i18n="nav.tribute">赞赏支持</span></a>
+    </nav>
+    <div class="lang-switch" id="langSwitch">
+      <button type="button" class="lang-trigger" id="langTrigger" aria-haspopup="true" aria-expanded="false">
+        <span class="lang-flag" id="langFlag"></span>
+        <span class="lang-name" id="langName"></span>
+        <svg class="lang-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9 L12 15 L18 9"/></svg>
+      </button>
+      <ul class="lang-menu" id="langMenu" role="menu" aria-label="选择语言 / Select language">
+        <li><button type="button" role="menuitem" data-lang="zh-CN" aria-checked="false"><span class="lang-flag">🇨🇳</span><span class="lang-name">简体中文</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="zh-Hant" aria-checked="false"><span class="lang-flag">🇭🇰</span><span class="lang-name">繁體中文</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en" aria-checked="false"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en-GB" aria-checked="false"><span class="lang-flag">🇬🇧</span><span class="lang-name">English (UK)</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en-US" aria-checked="false"><span class="lang-flag">🇺🇸</span><span class="lang-name">English (US)</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="fr" aria-checked="false"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="ja" aria-checked="false"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="es" aria-checked="false"><span class="lang-flag">🇪🇸</span><span class="lang-name">Español</span></button></li>
+      </ul>
+    </div>
+
+    <button class="nav-toggle" aria-label="展开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===== 页首横幅 ===== -->
+<section class="page-hero" id="top">
+  <div class="mountains" aria-hidden="true">
+    <div class="mountain-layer ml-far" data-speed="10">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path d="M0 320 L0 210 C 170 135, 320 245, 510 180 C 700 118, 780 70, 990 155 C 1180 226, 1310 155, 1440 195 L1440 320 Z" fill="#1d5569" opacity=".45"/>
+      </svg>
+    </div>
+    <div class="mountain-layer ml-mid" data-speed="24">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path d="M0 320 L0 245 C 195 175, 340 285, 550 215 C 730 155, 840 100, 1050 190 C 1215 260, 1335 205, 1440 240 L1440 320 Z" fill="#123a52" opacity=".8"/>
+      </svg>
+    </div>
+    <div class="mountain-layer ml-near" data-speed="44">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path d="M0 320 L0 272 C 205 214, 365 322, 625 254 C 845 198, 985 155, 1185 236 C 1305 284, 1385 252, 1440 274 L1440 320 Z" fill="#081c2c"/>
+      </svg>
+    </div>
+  </div>
+  <div class="container">
+    <p class="crumb" data-reveal><a href="index.html" data-i18n="crumb.home">首页</a> · <span data-i18n="nav.tools">实用工具</span></p>
+    <h1 data-reveal data-i18n-html="tools.titleH">百<span class="grad" style="background:linear-gradient(100deg,#eaf3f3,var(--cyan-300),var(--cyan-500));-webkit-background-clip:text;background-clip:text;color:transparent">工之器</span></h1>
+    <p class="lead" data-reveal data-i18n="tools.lead">百工之器，随取随用。绘图、计数、换算、计时，诸般小用，供君偶一为之，聊解烦冗。</p>
+  </div>
+</section>
+
+<!-- ===== 工具网格 ===== -->
+<section class="section" id="tools">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow" data-i18n="tools.eb1">百 工 之 器</span>
+      <h2 class="section-title" data-i18n-html="tools.gridT">诸般<span class="mark">小用</span></h2>
+    </div>
+    <div class="tool-grid" data-reveal>
+      <article class="tool-card">
+        <a class="t-link" href="tools/func-plot.html" aria-label="函数绘图"></a>
+        <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 18 C 6 11, 9 5, 12 11 C 15 17, 18 10, 21 14"/><path d="M3 4 L3 20 L21 20"/><path d="M3 12 L21 12"/></svg></div>
+        <div class="t-name" data-i18n="tools.t1">函数绘图</div>
+        <div class="t-desc" data-i18n="tools.d1">输入表达式，即刻绘制函数曲线。</div>
+        <div class="t-go">前往使用 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12 L19 12"/><path d="M13 6 L19 12 L13 18"/></svg></div>
+      </article>
+      <article class="tool-card">
+        <a class="t-link" href="tools/random-num.html" aria-label="随机数生成"></a>
+        <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 4 L10 4 L6 20 L10 20"/><path d="M15 4 L18 4 L15 20 L18 20"/><path d="M3 4 L4 4"/><path d="M3 20 L4 20"/></svg></div>
+        <div class="t-name" data-i18n="tools.t2">随机数生成</div>
+        <div class="t-desc" data-i18n="tools.d2">设定范围与个数，生成随机数。</div>
+        <div class="t-go">前往使用 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12 L19 12"/><path d="M13 6 L19 12 L13 18"/></svg></div>
+      </article>
+      <article class="tool-card">
+        <a class="t-link" href="tools/unit-conv.html" aria-label="单位换算"></a>
+        <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 4 L8 20"/><path d="M16 4 L16 20"/><path d="M4 8 L20 8"/><path d="M4 16 L20 16"/><path d="M8 4 L6 8 L10 8 Z"/><path d="M16 16 L14 20 L18 20 Z"/></svg></div>
+        <div class="t-name" data-i18n="tools.t3">单位换算</div>
+        <div class="t-desc" data-i18n="tools.d3">长度、温度、重量、速度互转。</div>
+        <div class="t-go">前往使用 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12 L19 12"/><path d="M13 6 L19 12 L13 18"/></svg></div>
+      </article>
+      <article class="tool-card">
+        <a class="t-link" href="tools/timer.html" aria-label="倒计时"></a>
+        <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="13" r="8"/><path d="M12 9 L12 13 L15 15"/><path d="M10 3 L14 3"/><path d="M12 5 L12 3"/></svg></div>
+        <div class="t-name" data-i18n="tools.t4">倒计时 · 番茄钟</div>
+        <div class="t-desc" data-i18n="tools.d4">设定时长，专注片刻。</div>
+        <div class="t-go">前往使用 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12 L19 12"/><path d="M13 6 L19 12 L13 18"/></svg></div>
+      </article>
+      <article class="tool-card">
+        <a class="t-link" href="tools/password.html" aria-label="密码生成"></a>
+        <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10 V7 A4 4 0 0 1 16 7 V10"/><circle cx="12" cy="15.5" r="1.5"/><path d="M12 17 L12 19"/></svg></div>
+        <div class="t-name" data-i18n="tools.t5">密码生成</div>
+        <div class="t-desc" data-i18n="tools.d5">按长度与字符集生成强密码。</div>
+        <div class="t-go">前往使用 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12 L19 12"/><path d="M13 6 L19 12 L13 18"/></svg></div>
+      </article>
+      <article class="tool-card">
+        <a class="t-link" href="tools/text-stats.html" aria-label="文本统计"></a>
+        <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6 L20 6"/><path d="M4 12 L20 12"/><path d="M4 18 L14 18"/><path d="M16 16 L20 20 L16 20 Z"/></svg></div>
+        <div class="t-name" data-i18n="tools.t6">文本统计</div>
+        <div class="t-desc" data-i18n="tools.d6">统计字数、字符、行数、段落。</div>
+        <div class="t-go">前往使用 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12 L19 12"/><path d="M13 6 L19 12 L13 18"/></svg></div>
+      </article>
+      
+      <article class="tool-card">
+        <a class="t-link" href="tools/text-editor.html" aria-label="文本编辑器"></a>
+        <div class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4 L20 4 L20 20 L4 20 Z"/><path d="M8 8 L16 8"/><path d="M8 12 L13 12"/><path d="M8 16 L11 16"/></svg></div>
+        <div class="t-name" data-i18n="tools.t7">文本编辑器</div>
+        <div class="t-desc" data-i18n="tools.d7">随写随存，刷新不丢，可导出 .html / .txt / .log。</div>
+        <div class="t-go">前往使用 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12 L19 12"/><path d="M13 6 L19 12 L13 18"/></svg></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="site-footer">
+  <svg class="mount" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 120 L0 70 C 220 20, 420 90, 680 50 C 900 18, 1160 80, 1440 40 L1440 120 Z" fill="#0a2a3c"/>
+  </svg>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+            <rect width="40" height="40" rx="7" fill="#0d2a3e"/>
+            <path d="M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z" fill="#3db5ad"/>
+          </svg>
+          <div><div class="brand-name">青岚</div><div class="brand-sub">QING LAN</div></div>
+        </a>
+        <p data-i18n="foot.lead">青岚，取青出于蓝之意，寄山水澄明之愿。以青蓝为底，古意为魂，愿以此一隅素净天地，与君共赏四时清趣。</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col1">驻足</h4>
+        <a href="index.html" data-i18n="foot.home">首页</a>
+        <a href="about.html" data-i18n="foot.about">关于我们</a>
+        <a href="works.html" data-i18n="foot.works">作品集</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col2">清谈</h4>
+        <a href="contact.html" data-i18n="foot.contact">联系我们</a>
+        <a href="tribute.html" data-i18n="foot.tribute">赞赏支持</a>
+        <a href="contact.html" data-i18n="foot.inquire">来函相询</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col3">四时</h4>
+        <a href="works.html" data-i18n="foot.w1">青山 · 佳篇</a>
+        <a href="works.html" data-i18n="foot.w2">碧水 · 清词</a>
+        <a href="works.html" data-i18n="foot.w3">归雁 · 长吟</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-i18n="foot.copyright">© 2026 青岚 · 古风雅集</span>
+      <span data-i18n="foot.slogan">山水有清音 · 愿君常驻此青蓝之间</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19 L12 5"/><path d="M5 12 L12 5 L19 12"/></svg>
+</button>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/i18n.js"></script>
+</body>
+</html>

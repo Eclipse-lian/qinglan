@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="f.title">青岚 · 函数绘图</title>
+<meta name="description" content="青岚实用工具 · 函数绘图，输入表达式即刻绘制曲线。" data-i18n-content="f.desc">
+<link rel="preconnect" href="https://miaoda.feishu.cn" crossorigin>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='7' fill='%230d2a3e'/%3E%3Cpath d='M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z' fill='%233db5ad'/%3E%3Cpath d='M5 33 L35 33 L35 35 L5 35 Z' fill='%232a9d97'/%3E%3C/svg%3E">
+<script>window.QL_FLAG_BASE='../';</script>
+<script>window.QL_I18N = {"f.eb1":{"zh-CN":"绘 图 之 器","zh-Hant":"繪 圖 之 器","en":"Plotting Instrument","en-GB":"Plotting Instrument","en-US":"Plotting Instrument","fr":"Instrument de tracé","fr-CA":"Instrument de tracé","ja":"描画の器","es":"Instrumento de trazado"},
+"f.lead":{"zh-CN":"书一函数，立现其形。可画 sin、cos、幂次、对数诸般曲线。","zh-Hant":"書一函數，立現其形。可畫 sin、cos、冪次、對數諸般曲線。","en":"Write a function and its shape appears at once - sines, cosines, powers, logarithms and more.","en-GB":"Write a function and its shape appears at once - sines, cosines, powers, logarithms and more.","en-US":"Write a function and its shape appears at once - sines, cosines, powers, logarithms and more.","fr":"Écrivez une fonction et sa forme apparaît aussitôt - sinus, cosinus, puissances, logarithmes et plus.","fr-CA":"Écrivez une fonction et sa forme apparaît aussitôt - sinus, cosinus, puissances, logarithmes et plus.","ja":"一つの関数を書けば、その形がたちどころに現れる。sin・cos・冪・対数など様々な曲線を描ける。","es":"Escribe una función y su forma aparece al instante: senos, cosenos, potencias, logaritmos y más."},
+"f.expr":{"zh-CN":"函数表达式","zh-Hant":"函數表達式","en":"Function Expression","en-GB":"Function Expression","en-US":"Function Expression","fr":"Expression de la fonction","fr-CA":"Expression de la fonction","ja":"関数式","es":"Expresión de la función"},
+"f.xmin":{"zh-CN":"x 最小","zh-Hant":"x 最小","en":"x Min","en-GB":"x Min","en-US":"x Min","fr":"x min","fr-CA":"x min","ja":"x 最小","es":"x mín"},
+"f.xmax":{"zh-CN":"x 最大","zh-Hant":"x 最大","en":"x Max","en-GB":"x Max","en-US":"x Max","fr":"x max","fr-CA":"x max","ja":"x 最大","es":"x máx"},
+"f.ymin":{"zh-CN":"y 最小（留空自动）","zh-Hant":"y 最小（留空自動）","en":"y Min (auto if empty)","en-GB":"y Min (auto if empty)","en-US":"y Min (auto if empty)","fr":"y min (auto si vide)","fr-CA":"y min (auto si vide)","ja":"y 最小（空欄なら自動）","es":"y mín (auto si vacío)"},
+"f.ymax":{"zh-CN":"y 最大（留空自动）","zh-Hant":"y 最大（留空自動）","en":"y Max (auto if empty)","en-GB":"y Max (auto if empty)","en-US":"y Max (auto if empty)","fr":"y max (auto si vide)","fr-CA":"y max (auto si vide)","ja":"y 最大（空欄なら自動）","es":"y máx (auto si vacío)"},
+"f.btn":{"zh-CN":"绘 制 曲 线","zh-Hant":"繪 製 曲 線","en":"Plot Curve","en-GB":"Plot Curve","en-US":"Plot Curve","fr":"Tracer la courbe","fr-CA":"Tracer la courbe","ja":"曲線を描く","es":"Dibujar curva"},
+"f.sample":{"zh-CN":"示例","zh-Hant":"示例","en":"Examples","en-GB":"Examples","en-US":"Examples","fr":"Exemples","fr-CA":"Exemples","ja":"例","es":"Ejemplos"},
+"f.zin":{"zh-CN":"放 大","zh-Hant":"放 大","en":"Zoom In","en-GB":"Zoom In","en-US":"Zoom In","fr":"Zoom avant","fr-CA":"Zoom avant","ja":"拡大","es":"Acercar"},
+"f.zout":{"zh-CN":"缩 小","zh-Hant":"縮 小","en":"Zoom Out","en-GB":"Zoom Out","en-US":"Zoom Out","fr":"Zoom arrière","fr-CA":"Zoom arrière","ja":"縮小","es":"Alejar"},
+"f.zreset":{"zh-CN":"重 置 视 野","zh-Hant":"重 置 視 野","en":"Reset View","en-GB":"Reset View","en-US":"Reset View","fr":"Réinitialiser la vue","fr-CA":"Réinitialiser la vue","ja":"視野をリセット","es":"Restablecer vista"},
+"f.zoom":{"zh-CN":"缩放","zh-Hant":"縮放","en":"Zoom","en-GB":"Zoom","en-US":"Zoom","fr":"Zoom","fr-CA":"Zoom","ja":"倍率","es":"Zoom"},
+"f.err":{"zh-CN":"表达式无效，请检查后再绘。","zh-Hant":"表達式無效，請檢查後再繪。","en":"Invalid expression - please check and try again.","en-GB":"Invalid expression - please check and try again.","en-US":"Invalid expression - please check and try again.","fr":"Expression invalide - veuillez vérifier puis retracer.","fr-CA":"Expression invalide - veuillez vérifier puis retracer.","ja":"式が無効です。確認してから描いてください。","es":"Expresión no válida: revísala e inténtalo de nuevo."},
+"f.title":{"zh-CN":"青岚 · 函数绘图","zh-Hant":"青嵐 · 函數繪圖","en":"Qinglan · Function Plot","en-GB":"Qinglan · Function Plot","en-US":"Qinglan · Function Plot","fr":"Qinglan · Tracé de fonction","fr-CA":"Qinglan · Tracé de fonction","ja":"青嵐 · 関数描画","es":"Qinglan · Gráfica de función"},
+"f.desc":{"zh-CN":"青岚实用工具 · 函数绘图，输入表达式即刻绘制曲线。","zh-Hant":"青嵐實用工具 · 函數繪圖，輸入表達式即刻繪製曲線。","en":"Qinglan tools · Function Plot - enter an expression and plot its curve instantly.","en-GB":"Qinglan tools · Function Plot - enter an expression and plot its curve instantly.","en-US":"Qinglan tools · Function Plot - enter an expression and plot its curve instantly.","fr":"Outils Qinglan · Tracé de fonction - saisissez une expression et tracez sa courbe aussitôt.","fr-CA":"Outils Qinglan · Tracé de fonction - saisissez une expression et tracez sa courbe aussitôt.","ja":"青嵐ツール · 関数描画 - 式を入力して即座に曲線を描く。","es":"Herramientas Qinglan · Gráfica de función: ingresa una expresión y dibuja su curva al instante."},
+"f.hint":{"zh-CN":"支持 + − × ÷（* /）、幂 ^、括号，及 sin / cos / tan / asin / acos / atan / ln / log / sqrt / abs / exp / pi / e。变量用 x（大写 X 亦可）；多曲线用英文分号 ; 分隔。","zh-Hant":"支持 + − × ÷（* /）、冪 ^、括號，及 sin / cos / tan / asin / acos / atan / ln / log / sqrt / abs / exp / pi / e。變數用 x（大寫 X 亦可）；多曲線用英文分號 ; 分隔。","en":"Supports + − × ÷ (* /), power ^, brackets, and sin / cos / tan / asin / acos / atan / ln / log / sqrt / abs / exp / pi / e. Use x as the variable (capital X also works); separate multiple curves with a semicolon ;.","en-GB":"Supports + − × ÷ (* /), power ^, brackets, and sin / cos / tan / asin / acos / atan / ln / log / sqrt / abs / exp / pi / e. Use x as the variable (capital X also works); separate multiple curves with a semicolon ;.","en-US":"Supports + − × ÷ (* /), power ^, brackets, and sin / cos / tan / asin / acos / atan / ln / log / sqrt / abs / exp / pi / e. Use x as the variable (capital X also works); separate multiple curves with a semicolon ;.","fr":"Prend en charge + − × ÷ (* /), la puissance ^, les parenthèses, et sin / cos / tan / asin / acos / atan / ln / log / sqrt / abs / exp / pi / e. Utilisez x comme variable (X majuscule accepté) ; séparez plusieurs courbes par un point-virgule ;.","fr-CA":"Prend en charge + − × ÷ (* /), la puissance ^, les parenthèses, et sin / cos / tan / asin / acos / atan / ln / log / sqrt / abs / exp / pi / e. Utilisez x comme variable (X majuscule accepté) ; séparez plusieurs courbes par un point-virgule ;.","ja":"+ − × ÷（* /）、冪 ^、括弧、sin / cos / tan / asin / acos / atan / ln / log / sqrt / abs / exp / pi / e をサポート。変数は x（大文字 X も可）；複数の曲線はセミコロン ; で区切る。","es":"Admite + − × ÷ (* /), potencia ^, paréntesis y sin / cos / tan / asin / acos / atan / ln / log / sqrt / abs / exp / pi / e. Usa x como variable (también vale X mayúscula); separa varias curvas con punto y coma ;."}};</script>
+<style>
+  .tool-shell{max-width:1500px;margin:0 auto}
+  .plot-layout{display:flex;gap:1.4rem;align-items:flex-start;margin-top:1.6rem}
+  .plot-ctrl{flex:0 0 300px;background:linear-gradient(160deg,rgba(12,35,52,.92),rgba(13,42,62,.6));border:1px solid rgba(61,181,173,.3);border-radius:14px;padding:1.3rem;display:flex;flex-direction:column;gap:1rem}
+  .p-field label{display:block;font-size:.86rem;color:#a9cdc9;margin-bottom:.35rem}
+  .p-field input,.p-field select{width:100%;padding:.6rem .8rem;border:1px solid rgba(61,181,173,.4);border-radius:8px;background:#0a2537;color:#eaf3f3;font:inherit}
+  .p-field input:focus,.p-field select:focus{outline:none;border-color:#58c9c0}
+  .z-row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+  .z-row .p-btn:last-child{grid-column:1 / -1}
+  .p-btn{display:inline-block;padding:.62rem .9rem;border-radius:8px;background:linear-gradient(135deg,#1c5a76,#3db5ad);color:#06202c;font-weight:700;letter-spacing:.03em;cursor:pointer;border:none;font-size:.92rem;text-align:center}
+  .p-btn.ghost{background:transparent;border:1px solid rgba(61,181,173,.5);color:#cfeae6}
+  .p-btn:hover{filter:brightness(1.08)}
+  .zoom-cap{font-size:.82rem;color:#a9cdc9;text-align:center;margin-bottom:.4rem}
+  .p-msg{min-height:1.3em;color:#e77b7b;font-size:.88rem}
+  .p-hint{font-size:.8rem;color:rgba(169,205,201,.75);line-height:1.7}
+  .plot-box{flex:1 1 auto;border:1px solid rgba(61,181,173,.3);border-radius:14px;overflow:hidden;background:#081c2c;min-width:0}
+  .plot-box canvas{display:block;width:100%;height:auto}
+  .back-link{margin-top:1.4rem}
+  @media(max-width:880px){.plot-layout{flex-direction:column}.plot-ctrl{flex:1 1 auto;width:100%}}
+</style>
+</head>
+<body class="grain">
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="../index.html" class="brand" aria-label="青岚首页">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="7" fill="#0d2a3e"/>
+        <path d="M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z" fill="#3db5ad"/>
+        <path d="M5 33 L35 33 L35 36 L5 36 Z" fill="#2a9d97"/>
+      </svg>
+      <div>
+        <div class="brand-name">青岚</div>
+        <div class="brand-sub">QING LAN</div>
+      </div>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="主导航">
+      <a href="../index.html" data-i18n="nav.home">首页</a>
+      <a href="../about.html" data-i18n="nav.about">关于</a>
+      <a href="../works.html" data-i18n="nav.works">作品</a>
+      <a href="../tools.html" class="active" aria-current="page" data-i18n="nav.tools">实用工具</a>
+      <a href="../friends.html" data-i18n="nav.friends">友情链接</a>
+      <a href="../contact.html" data-i18n="nav.contact">联系我们</a>
+      <a href="../tribute.html" class="nav-cta btn btn-seal"><span data-i18n="nav.tribute">赞赏支持</span></a>
+    </nav>
+    <div class="lang-switch" id="langSwitch">
+      <button type="button" class="lang-trigger" id="langTrigger" aria-haspopup="true" aria-expanded="false">
+        <span class="lang-flag" id="langFlag"></span>
+        <span class="lang-name" id="langName"></span>
+        <svg class="lang-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9 L12 15 L18 9"/></svg>
+      </button>
+      <ul class="lang-menu" id="langMenu" role="menu" aria-label="选择语言 / Select language">
+        <li><button type="button" role="menuitem" data-lang="zh-CN" aria-checked="false"><span class="lang-flag">🇨🇳</span><span class="lang-name">简体中文</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="zh-Hant" aria-checked="false"><span class="lang-flag">🇭🇰</span><span class="lang-name">繁體中文</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en" aria-checked="false"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en-GB" aria-checked="false"><span class="lang-flag">🇬🇧</span><span class="lang-name">English (UK)</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="en-US" aria-checked="false"><span class="lang-flag">🇺🇸</span><span class="lang-name">English (US)</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="fr" aria-checked="false"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="ja" aria-checked="false"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span></button></li>
+        <li><button type="button" role="menuitem" data-lang="es" aria-checked="false"><span class="lang-flag">🇪🇸</span><span class="lang-name">Español</span></button></li>
+      </ul>
+    </div>
+
+    <button class="nav-toggle" aria-label="展开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero" id="top">
+  <div class="container">
+    <p class="crumb" data-reveal><a href="../index.html" data-i18n="crumb.home">首页</a> · <a href="../tools.html" data-i18n="nav.tools">实用工具</a> · <span data-i18n="tools.t1">函数绘图</span></p>
+    <h1 data-reveal data-i18n="f.eb1">绘 图 之 器</h1>
+    <p class="lead" data-reveal data-i18n="f.lead">书一函数，立现其形。</p>
+  </div>
+</section>
+
+<section class="section" id="tool">
+  <div class="container">
+    <div class="tool-shell" data-reveal>
+      <div class="plot-layout">
+        <aside class="plot-ctrl">
+          <div class="p-field">
+            <label for="expr" data-i18n="f.expr">函数表达式</label>
+            <input id="expr" type="text" value="sqrt(1-(abs(x)-1)^2);-3*sqrt(1-(abs(x)/2)^0.5)" spellcheck="false">
+          </div>
+          <div class="p-field">
+            <label for="sample" data-i18n="f.sample">示例</label>
+            <select id="sample">
+              <option value="sqrt(1-(abs(x)-1)^2);-3*sqrt(1-(abs(x)/2)^0.5)" selected>爱心</option>
+              <option value="sin(x)">y = sin(x)</option>
+              <option value="cos(x)">y = cos(x)</option>
+              <option value="x^2">y = x²</option>
+              <option value="x^3 - 2*x">y = x³ − 2x</option>
+              <option value="1/x">y = 1/x</option>
+              <option value="ln(x)">y = ln(x)</option>
+              <option value="sqrt(x)">y = √x</option>
+              <option value="abs(x)">y = |x|</option>
+            </select>
+          </div>
+          <div>
+            <div class="zoom-cap" data-i18n="f.zoom">缩放</div>
+            <div class="z-row">
+              <button class="p-btn" id="zin" data-i18n="f.zin">放 大</button>
+              <button class="p-btn" id="zout" data-i18n="f.zout">缩 小</button>
+              <button class="p-btn ghost" id="zreset" data-i18n="f.zreset">重 置 视 野</button>
+            </div>
+          </div>
+          <div class="p-field"><label for="xmin" data-i18n="f.xmin">x 最小</label><input id="xmin" type="number" value="-2.2" step="any"></div>
+          <div class="p-field"><label for="xmax" data-i18n="f.xmax">x 最大</label><input id="xmax" type="number" value="2.2" step="any"></div>
+          <div class="p-field"><label for="ymin" data-i18n="f.ymin">y 最小</label><input id="ymin" type="number" placeholder="auto" step="any"></div>
+          <div class="p-field"><label for="ymax" data-i18n="f.ymax">y 最大</label><input id="ymax" type="number" placeholder="auto" step="any"></div>
+          <button class="p-btn" id="plotBtn" data-i18n="f.btn">绘 制 曲 线</button>
+          <span class="p-msg" id="pMsg"></span>
+          <p class="p-hint" data-i18n="f.hint">支持 + − × ÷（* /）、幂 ^、括号，及 sin / cos / tan / asin / acos / atan / ln / log / sqrt / abs / exp / pi / e。变量用 x（大写 X 亦可）。</p>
+        </aside>
+        <div class="plot-box"><canvas id="plotCanvas" width="1500" height="840"></canvas></div>
+      </div>
+      <div class="back-link"><a href="../tools.html" class="btn btn-ghost" data-i18n="nav.tools">← 返回实用工具</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <svg class="mount" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 120 L0 70 C 220 20, 420 90, 680 50 C 900 18, 1160 80, 1440 40 L1440 120 Z" fill="#0a2a3c"/>
+  </svg>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="../index.html" class="brand">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+            <rect width="40" height="40" rx="7" fill="#0d2a3e"/>
+            <path d="M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z" fill="#3db5ad"/>
+          </svg>
+          <div><div class="brand-name">青岚</div><div class="brand-sub">QING LAN</div></div>
+        </a>
+        <p data-i18n="foot.lead">青岚，取青出于蓝之意，寄山水澄明之愿。以青蓝为底，古意为魂，愿以此一隅素净天地，与君共赏四时清趣。</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col1">驻足</h4>
+        <a href="../index.html" data-i18n="foot.home">首页</a>
+        <a href="../about.html" data-i18n="foot.about">关于我们</a>
+        <a href="../works.html" data-i18n="foot.works">作品集</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col2">清谈</h4>
+        <a href="../contact.html" data-i18n="foot.contact">联系我们</a>
+        <a href="../tribute.html" data-i18n="foot.tribute">赞赏支持</a>
+        <a href="../contact.html" data-i18n="foot.inquire">来函相询</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot.col3">四时</h4>
+        <a href="../works.html" data-i18n="foot.w1">青山 · 佳篇</a>
+        <a href="../works.html" data-i18n="foot.w2">碧水 · 清词</a>
+        <a href="../works.html" data-i18n="foot.w3">归雁 · 长吟</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-i18n="foot.copyright">© 2026 青岚 · 古风雅集</span>
+      <span data-i18n="foot.slogan">山水有清音 · 愿君常驻此青蓝之间</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19 L12 5"/><path d="M5 12 L12 5 L19 12"/></svg>
+</button>
+
+<script>
+window.__T = function (k) {
+  var m = (window.QL_I18N || {})[k];
+  if (!m) return k;
+  var l = localStorage.getItem('ql-lang') || 'zh-CN';
+  return (m[l] != null) ? m[l] : (m.en != null ? m.en : (m['zh-CN'] != null ? m['zh-CN'] : k));
+};
+(function () {
+  var zoom = 1;
+  var COLORS = ['#58d4c8', '#f0a35e', '#b78ff0', '#e07b9b', '#7fd08a', '#f2c84b'];
+  function safeCompile(expr) {
+    if (!/^[0-9a-zA-Z_+\-*/^().,; \t]+$/.test(expr)) return null;
+    var s = expr
+      .replace(/\bX\b/g, 'x')
+      .replace(/\^/g, '**')
+      .replace(/\bacos\b/g, 'Math.acos')
+      .replace(/\basin\b/g, 'Math.asin')
+      .replace(/\batan\b/g, 'Math.atan')
+      .replace(/\bcos\b/g, 'Math.cos')
+      .replace(/\bsin\b/g, 'Math.sin')
+      .replace(/\btan\b/g, 'Math.tan')
+      .replace(/\babs\b/g, 'Math.abs')
+      .replace(/\bsqrt\b/g, 'Math.sqrt')
+      .replace(/\blog\b/g, 'Math.log10')
+      .replace(/\bln\b/g, 'Math.log')
+      .replace(/\bexp\b/g, 'Math.exp')
+      .replace(/\bfloor\b/g, 'Math.floor')
+      .replace(/\bceil\b/g, 'Math.ceil')
+      .replace(/\bpi\b/g, 'Math.PI')
+      .replace(/\be\b/g, 'Math.E');
+    try { var fn = new Function('x', 'return (' + s + ');'); fn(0); return fn; } catch (e) { return null; }
+  }
+  function safeCompileAll(expr) {
+    var parts = expr.split(';').map(function (p) { return p.trim(); }).filter(Boolean);
+    var fns = [];
+    for (var i = 0; i < parts.length; i++) {
+      var f = safeCompile(parts[i]);
+      if (!f) return null;
+      fns.push(f);
+    }
+    return fns;
+  }
+  function plot() {
+    var msg = document.getElementById('pMsg');
+    var expr = document.getElementById('expr').value.trim();
+    var fns = safeCompileAll(expr);
+    if (!fns) { msg.textContent = window.__T('f.err'); return; }
+    msg.textContent = '';
+    var xmin = parseFloat(document.getElementById('xmin').value);
+    var xmax = parseFloat(document.getElementById('xmax').value);
+    if (!isFinite(xmin)) xmin = -2.2;
+    if (!isFinite(xmax)) xmax = 2.2;
+    if (xmin >= xmax) { var tt = xmin; xmin = xmax; xmax = tt; }
+    var yminIn = document.getElementById('ymin').value;
+    var ymaxIn = document.getElementById('ymax').value;
+    var cv = document.getElementById('plotCanvas');
+    var W = cv.width, H = cv.height;
+    var ctx = cv.getContext('2d');
+    ctx.clearRect(0, 0, W, H);
+    var cx = (xmin + xmax) / 2, cw = (xmax - xmin) / zoom;
+    var ax = cx - cw / 2, bx = cx + cw / 2;
+    var N = 800;
+    var sets = [], allYs = [];
+    for (var ci = 0; ci < fns.length; ci++) {
+      var fn = fns[ci], pts = [];
+      for (var i = 0; i <= N; i++) {
+        var x = ax + (bx - ax) * i / N;
+        var y;
+        try { y = fn(x); } catch (e) { y = NaN; }
+        pts.push([x, isFinite(y) ? y : NaN]);
+      }
+      sets.push(pts);
+      for (var k = 0; k < pts.length; k++) if (isFinite(pts[k][1])) allYs.push(pts[k][1]);
+    }
+    var ay, by;
+    if (isFinite(parseFloat(yminIn)) && isFinite(parseFloat(ymaxIn))) {
+      var cy = (parseFloat(yminIn) + parseFloat(ymaxIn)) / 2, ch = (parseFloat(ymaxIn) - parseFloat(yminIn)) / zoom;
+      ay = cy - ch / 2; by = cy + ch / 2;
+    } else {
+      if (!allYs.length) { ay = -1; by = 1; }
+      else { ay = Math.min.apply(null, allYs); by = Math.max.apply(null, allYs); }
+      if (ay === by) { ay -= 1; by += 1; }
+      var cyy = (ay + by) / 2, chh = (by - ay) / zoom;
+      ay = cyy - chh / 2; by = cyy + chh / 2;
+    }
+    var pad = 48;
+    var X = function (x) { return pad + (x - ax) / (bx - ax) * (W - 2 * pad); };
+    var Y = function (y) { return H - pad - (y - ay) / (by - ay) * (H - 2 * pad); };
+    ctx.strokeStyle = 'rgba(120,180,180,.14)';
+    ctx.lineWidth = 1;
+    var xTicks = 10, yTicks = 8;
+    for (var gx = 0; gx <= xTicks; gx++) { var sx = ax + (bx - ax) * gx / xTicks; ctx.beginPath(); ctx.moveTo(X(sx), pad); ctx.lineTo(X(sx), H - pad); ctx.stroke(); }
+    for (var gy = 0; gy <= yTicks; gy++) { var sy = ay + (by - ay) * gy / yTicks; ctx.beginPath(); ctx.moveTo(pad, Y(sy)); ctx.lineTo(W - pad, Y(sy)); ctx.stroke(); }
+    ctx.strokeStyle = 'rgba(230,243,243,.6)';
+    ctx.lineWidth = 1.4;
+    if (0 >= ay && 0 <= by) { ctx.beginPath(); ctx.moveTo(pad, Y(0)); ctx.lineTo(W - pad, Y(0)); ctx.stroke(); }
+    if (0 >= ax && 0 <= bx) { ctx.beginPath(); ctx.moveTo(X(0), pad); ctx.lineTo(X(0), H - pad); ctx.stroke(); }
+    ctx.fillStyle = 'rgba(169,205,201,.85)';
+    ctx.font = '12px sans-serif';
+    ctx.fillText(ax.toFixed(1), pad - 4, H - pad + 18);
+    ctx.fillText(bx.toFixed(1), W - pad - 34, H - pad + 18);
+    ctx.fillText(by.toFixed(1), pad - 4, pad - 4);
+    ctx.fillText(ay.toFixed(1), pad - 4, H - pad + 2);
+    for (var ci2 = 0; ci2 < sets.length; ci2++) {
+      var pts2 = sets[ci2];
+      ctx.strokeStyle = COLORS[ci2 % COLORS.length];
+      ctx.lineWidth = 2.8;
+      ctx.shadowColor = COLORS[ci2 % COLORS.length];
+      ctx.shadowBlur = 9;
+      ctx.beginPath();
+      var started = false;
+      for (var j = 0; j < pts2.length; j++) {
+        if (isFinite(pts2[j][1])) {
+          var px = X(pts2[j][0]), py = Y(pts2[j][1]);
+          if (!started) { ctx.moveTo(px, py); started = true; } else ctx.lineTo(px, py);
+        } else started = false;
+      }
+      ctx.stroke();
+    }
+    ctx.shadowBlur = 0;
+  }
+  document.getElementById('sample').addEventListener('change', function () {
+    document.getElementById('expr').value = this.value;
+    plot();
+  });
+  document.getElementById('plotBtn').addEventListener('click', plot);
+  document.getElementById('expr').addEventListener('keydown', function (e) { if (e.key === 'Enter') plot(); });
+  document.getElementById('zin').addEventListener('click', function () { zoom = Math.min(60, zoom * 1.4); plot(); });
+  document.getElementById('zout').addEventListener('click', function () { zoom = Math.max(0.1, zoom / 1.4); plot(); });
+  document.getElementById('zreset').addEventListener('click', function () { zoom = 1; document.getElementById('xmin').value = -2.2; document.getElementById('xmax').value = 2.2; document.getElementById('ymin').value = ''; document.getElementById('ymax').value = ''; plot(); });
+  ['xmin','xmax','ymin','ymax'].forEach(function (id) { document.getElementById(id).addEventListener('change', function () { zoom = 1; plot(); }); });
+  plot();
+})();
+</script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/i18n.js"></script>
+</body>
+</html>

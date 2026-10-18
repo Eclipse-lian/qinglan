@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>姚子轩 · 个人简介</title>
+<meta name="description" content="姚子轩个人简介 · 玉山县玉山一中 · 自称江西彭于晏。">
+<link rel="preconnect" href="https://miaoda.feishu.cn" crossorigin>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%231a1107'/%3E%3Cpath d='M9 27 C 14 22, 16 26, 20 21 S 26 19, 30 24 L30 31 L9 31 Z' fill='%23e2b860'/%3E%3C/svg%3E">
+<style>
+  /* ===== 姚子轩个人简介页 · 黑金摩登奢华风（独立样式，仅页脚沿用青岚） ===== */
+  body{background:#0b0805 !important;color:#f0dcac;overflow-x:hidden}
+  .bg-orb{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.5}
+  .bg-orb.o1{width:520px;height:520px;background:rgba(212,175,55,.22);top:-160px;right:-120px}
+  .bg-orb.o2{width:420px;height:420px;background:rgba(160,106,30,.18);bottom:-120px;left:-140px}
+  .yz-wrap{width:min(1080px,92%);margin:0 auto;position:relative;z-index:2}
+
+  /* 回滚式入场动画：进入视口浮现，离开视口回退 */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(0.22,1,0.36,1),transform .9s cubic-bezier(0.22,1,0.36,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.12s}
+  .reveal.d2{transition-delay:.24s}
+  .reveal.d3{transition-delay:.36s}
+
+  /* 顶部返回条 */
+  .yz-top{padding:1rem 0;position:relative;z-index:20;border-bottom:1px solid rgba(212,175,55,.18);background:rgba(11,8,5,.4)}
+  .yz-top-in{display:flex;align-items:center;justify-content:space-between}
+  .yz-back{font-size:.86rem;letter-spacing:.06em;color:#c9a45a;display:inline-flex;align-items:center;gap:.45rem;transition:color .3s}
+  .yz-back:hover{color:#f3e2ae}
+  .yz-brand{font-size:1.05rem;font-weight:700;letter-spacing:.22em;color:#e2b860}
+
+  /* Hero：黑金金属感 */
+  .yz-hero{padding:5rem 0 3.2rem;text-align:center;position:relative}
+  .yz-hero::before,.yz-hero::after{content:"";position:absolute;left:50%;transform:translateX(-50%);height:1px;
+    background:linear-gradient(90deg,transparent,#d4af37,transparent)}
+  .yz-hero::before{top:0;width:60%}
+  .yz-hero::after{bottom:0;width:100%}
+  .yz-eyebrow{display:inline-block;font-size:.82rem;letter-spacing:.42em;color:#d4af37;font-weight:500}
+  .yz-eyebrow::before,.yz-eyebrow::after{content:"—";margin:0 .8em;color:rgba(212,175,55,.5)}
+  .yz-name{font-size:clamp(3rem,8vw,5.6rem);font-weight:900;letter-spacing:.2em;line-height:1.08;margin:.7rem 0 .5rem;
+    background:linear-gradient(120deg,#f7e3ae 10%,#e2b860 35%,#c99a35 55%,#f0d48a 80%,#e2b860 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 6px 24px rgba(212,175,55,.28))}
+  .yz-hero-sub{font-size:1.02rem;letter-spacing:.3em;color:#c9a45a}
+  .yz-hero-sub b{color:#f0d48a;font-weight:600}
+
+  /* 主视觉：黑金框意境图 */
+  .yz-figure{padding:2.4rem 0 1.2rem}
+  .yz-figure-card{position:relative;border-radius:6px;overflow:hidden;border:1px solid rgba(212,175,55,.4);
+    box-shadow:0 0 0 1px rgba(0,0,0,.6),0 30px 80px -30px rgba(0,0,0,.9),0 0 60px -20px rgba(212,175,55,.25)}
+  .yz-figure-card img{width:100%;height:min(58vh,500px);object-fit:cover;display:block;filter:saturate(1.05) contrast(1.03)}
+  .yz-figure-cap{position:absolute;left:14px;bottom:14px;background:rgba(10,7,3,.72);color:#f0d48a;
+    border:1px solid rgba(212,175,55,.35);font-size:.8rem;letter-spacing:.26em;padding:.5rem 1rem}
+
+  /* 区块 */
+  .yz-section{padding:2.8rem 0}
+  .yz-section-tag{display:flex;align-items:center;gap:1rem;color:#d4af37;font-size:.82rem;letter-spacing:.38em;font-weight:600}
+  .yz-section-tag::before,.yz-section-tag::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,#d4af37)}
+  .yz-section-tag::before{background:linear-gradient(90deg,#d4af37,transparent)}
+
+  /* 签名卡（黑金玻璃） */
+  .yz-motto{margin-top:1.8rem;padding:2.8rem 3rem;position:relative;background:linear-gradient(165deg,rgba(212,175,55,.08),rgba(11,8,5,.4));
+    border:1px solid rgba(212,175,55,.32);border-radius:8px;box-shadow:inset 0 0 60px -30px rgba(212,175,55,.35)}
+  .yz-motto::before{content:"“";position:absolute;top:-1.4rem;left:1.4rem;font-size:8rem;line-height:1;color:rgba(212,175,55,.22);font-family:Georgia,serif}
+  .yz-motto p{font-size:clamp(1.15rem,2.3vw,1.5rem);line-height:2.2;letter-spacing:.1em;color:#f0dcac;font-weight:600}
+  .yz-motto p b{color:#f0d48a;font-weight:700}
+  .yz-motto small{display:block;margin-top:1.2rem;font-size:.82rem;letter-spacing:.22em;color:#a98a4a}
+
+  /* 联系卡片（黑金细框） */
+  .yz-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:1.8rem}
+  .yz-card{background:linear-gradient(160deg,rgba(212,175,55,.08),rgba(11,8,5,.5));border:1px solid rgba(212,175,55,.28);
+    border-radius:8px;padding:1.6rem 1.4rem;text-align:center;transition:transform .35s cubic-bezier(0.22,1,0.36,1),border-color .3s,box-shadow .3s}
+  .yz-card:hover{transform:translateY(-6px);border-color:rgba(240,208,138,.6);box-shadow:0 18px 44px -24px rgba(212,175,55,.3)}
+  .yz-card .lbl{display:block;font-size:.76rem;letter-spacing:.32em;color:#c9a45a;margin-bottom:.55rem;font-weight:600}
+  .yz-card .val{font-size:1.02rem;color:#f0dcac;font-weight:600;word-break:break-all}
+  .yz-card a.val{color:#f0d48a;border-bottom:1px dashed rgba(212,175,55,.5);padding-bottom:.1rem;transition:color .3s,border-color .3s}
+  .yz-card a.val:hover{color:#fff;border-color:#f0d48a}
+
+  @media (max-width:760px){
+    .yz-cards{grid-template-columns:1fr}
+    .yz-motto{padding:2rem 1.4rem}
+    .yz-hero{padding:3.6rem 0 2.4rem}
+  }
+</style>
+</head>
+<body>
+<div class="bg-orb o1"></div>
+<div class="bg-orb o2"></div>
+
+<!-- ===== 顶部返回条 ===== -->
+<header class="yz-top">
+  <div class="yz-wrap yz-top-in">
+    <a href="../friends.html" class="yz-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12 L5 12"/><path d="M11 6 L5 12 L11 18"/></svg>
+      返回友情链接
+    </a>
+    <a href="../index.html" class="yz-brand">青 岚</a>
+  </div>
+</header>
+
+<!-- ===== Hero（黑金） ===== -->
+<section class="yz-hero">
+  <div class="yz-wrap">
+    <span class="yz-eyebrow reveal">江西彭于晏 · 玉山少年</span>
+    <h1 class="yz-name reveal d1">姚 子 轩</h1>
+    <p class="yz-hero-sub reveal d2">就读于 <b>玉山县玉山一中</b></p>
+  </div>
+</section>
+
+<!-- ===== 主视觉：黑金意境图 ===== -->
+<section class="yz-figure">
+  <div class="yz-wrap">
+    <div class="yz-figure-card reveal">
+      <img src="../assets/img/yao-zixuan-motto.jpg" alt="金日山河，玉山少年">
+      <span class="yz-figure-cap">金日山河 · 玉山少年</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 个性签名 ===== -->
+<section class="yz-section">
+  <div class="yz-wrap">
+    <div class="yz-section-tag reveal">个性签名</div>
+    <blockquote class="yz-motto reveal">
+      <p>生而俊朗，自许风流；眉目如画，<b>气宇轩昂</b>。<br>
+        玉山一少年，人号<b>江西彭于晏</b>。<br>
+        纵红尘万象，不改傲然本心。</p>
+      <small>—— 姚子轩 自铭</small>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ===== 联络方式 ===== -->
+<section class="yz-section" style="padding-top:0">
+  <div class="yz-wrap">
+    <div class="yz-section-tag reveal">联络我</div>
+    <div class="yz-cards">
+      <div class="yz-card reveal d1"><span class="lbl">QQ</span><a class="val" href="https://wpa.qq.com/msgrd?v=3&amp;uin=2950431302&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener">2950431302</a></div>
+      <div class="yz-card reveal d2"><span class="lbl">邮箱</span><a class="val" href="mailto:2950431302@qq.com">2950431302@qq.com</a></div>
+      <div class="yz-card reveal d3"><span class="lbl">学校</span><span class="val">玉山县玉山一中</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚（沿用青岚） ===== -->
+<footer class="site-footer">
+  <svg class="mount" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 120 L0 70 C 220 20, 420 90, 680 50 C 900 18, 1160 80, 1440 40 L1440 120 Z" fill="#0a2a3c"/>
+  </svg>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="../index.html" class="brand">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+            <rect width="40" height="40" rx="7" fill="#0d2a3e"/>
+            <path d="M5 28 C 13 20, 16 26, 22 18 S 30 14, 35 22 L35 33 L5 33 Z" fill="#3db5ad"/>
+          </svg>
+          <div><div class="brand-name">青岚</div><div class="brand-sub">QING LAN</div></div>
+        </a>
+        <p>青岚，取青出于蓝之意，寄山水澄明之愿。以青蓝为底，古意为魂，愿以此一隅素净天地，与君共赏四时清趣。</p>
+      </div>
+      <div class="foot-col">
+        <h4>驻足</h4>
+        <a href="../index.html">首页</a>
+        <a href="../about.html">关于我们</a>
+        <a href="../works.html">作品集</a>
+      </div>
+      <div class="foot-col">
+        <h4>清谈</h4>
+        <a href="../contact.html">联系我们</a>
+        <a href="../tribute.html">赞赏支持</a>
+        <a href="../contact.html">来函相询</a>
+      </div>
+      <div class="foot-col">
+        <h4>四时</h4>
+        <a href="../works.html">青山 · 佳篇</a>
+        <a href="../works.html">碧水 · 清词</a>
+        <a href="../works.html">归雁 · 长吟</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 青岚 · 古风雅集</span>
+      <span>山水有清音 · 愿君常驻此青蓝之间</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="回到顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19 L12 5"/><path d="M5 12 L12 5 L19 12"/></svg>
+</button>
+
+<script>
+  /* 回滚式滚动动画：进入视口浮现，离开视口回退，再次进入重播 */
+  window.addEventListener('DOMContentLoaded', function () {
+    var items = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('in'); }
+          else { en.target.classList.remove('in'); }
+        });
+      }, { threshold: 0.15 });
+      items.forEach(function (el) { io.observe(el); });
+    } else {
+      items.forEach(function (el) { el.classList.add('in'); });
+    }
+  });
+</script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
